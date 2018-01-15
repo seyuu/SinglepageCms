@@ -8,5 +8,5 @@ public class AdminController : BaseController {
         return View();
     }
 
-    public int noruyon = 0;
+    public int noruyon = 1;
 }
