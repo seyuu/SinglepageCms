@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<div class="block-header">
+    <div class="row remove-margin">
+        <div class="col-md-8">
+            <div class="header-section">
+                <h1>Slayt</h1>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a href="@Request.UrlReferrer" class="header-link">
+                <h1><i class="fa fa-fw fa-chevron-left"></i><small>Geri</small></h1>
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="javascript:$('form').submit()" class="header-link">
+                <h1><i class="fa fa-fw fa-check"></i><small>Kaydet</small></h1>
+            </a>
+        </div>
+    </div>
+</div>
+
+<form action="@Request.Url" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+    <input id="ID" name="ID" value="@ViewBag.model.ID" type="hidden" />
+    <input id="SectionID" name="SectionID" type="hidden" value="@ViewBag.model.SectionID" />
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Width">Genişlik</label>
+        <div class="col-md-9">
+            <select id="Width" name="Width" class="form-control" size="1">
+                @for (int i = 1; i <= 12; i++) {
+                    <option value="@i" @(i == ViewBag.model.Width ? "selected" : "")>@i Sütun</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Items">Kaç resim gösterilecek</label>
+        <div class="col-md-9">
+            <select id="Items" name="Items" class="form-control" size="1">
+                @for (int i = 1; i <= 5; i++) {
+                    <option value="@i" @(i == ViewBag.model.Items ? "selected" : "")>@i Resim</option>
+                }
+            </select>
+        </div>
+    </div> 
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Nav">Okları göster</label>
+        <div class="col-md-9">
+            <label class="switch switch-primary">
+                <input id="Nav" name="Nav" value="true" type="checkbox" @(ViewBag.model.Nav ? "checked" : "")><span></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Dot">Noktaları göster</label>
+        <div class="col-md-9">
+            <label class="switch switch-primary">
+                <input id="Dot" name="Dot" value="true" type="checkbox" @(ViewBag.model.Dot ? "checked" : "")><span></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Autoplay">Otomatik geçiş</label>
+        <div class="col-md-9">
+            <label class="switch switch-primary">
+                <input id="Autoplay" name="Autoplay" value="true" type="checkbox" @(ViewBag.model.Autoplay ? "checked" : "")><span></span>
+            </label>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-2">
+            <a href="~/admin/block/@ViewBag.model.SectionID" class="btn btn-default"><i class="fa fa-times"></i> Vazgeç</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Kaydet</button>
+        </div>
+    </div>
+
+</form>

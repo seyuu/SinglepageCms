@@ -1,0 +1,108 @@
+﻿@*<div class="owl-carousel big-gallery owl-theme owl-center owl-loaded"  
+        data-owl-auto-width="1" 
+        data-owl-center="1" 
+        data-owl-items="@ViewBag.model.Items"
+        data-owl-autoplay="@(ViewBag.model.Autoplay ?1:0)" 
+        data-owl-nav="@(ViewBag.model.Nav ?1:0)" 
+        data-owl-dots="@(ViewBag.model.Dot ?1:0)">
+   
+</div>*@
+
+<div class="owl-carousel big-gallery" data-owl-items="3" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="0" data-owl-center="1" data-owl-loop="1" data-owl-nav-container="#projelerNav1" data-owl-autoplay="1">
+    @foreach (var i in ViewBag.model.SlideItem) {
+        <img src="~/content/uploads/@(i.Image)" alt="">
+    }
+</div>
+
+@*
+    <div class="gallery">
+        <div class="owl-carousel one-item-carousel" data-owl-items="1" data-owl-margin="0" data-owl-nav="0" data-owl-dots="1">
+            <img src="assets/img/image-video.jpg" alt="">
+            <img src="assets/img/image-video.jpg" alt="">
+            <img src="assets/img/image-video.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="owl-carousel big-gallery" data-owl-items="3" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="0" data-owl-center="1" data-owl-loop="1" data-owl-nav-container="#big-gallery-nav">
+        <div class="slide">
+            <div class="container">
+                <img src="assets/img/gallery-big-01.jpg" alt="">
+                <div class="description">
+                    <h3 class="framed">Front View</h3>
+                </div>
+            </div>
+            <!--end container-->
+        </div>
+        <!--end slide-->
+        <div class="slide">
+            <div class="container">
+                <img src="assets/img/gallery-big-02.jpg" alt="">
+                <div class="description">
+                    <h3 class="framed">Garage</h3>
+                </div>
+            </div>
+            <!--end container-->
+        </div>
+        <!--end slide-->
+        <div class="slide">
+            <div class="container">
+                <img src="assets/img/gallery-big-03.jpg" alt="">
+                <div class="description">
+                    <h3 class="framed">Back View</h3>
+                </div>
+            </div>
+            <!--end container-->
+        </div>
+        <!--end slide-->
+    </div>
+    <!--end big-gallery-->
+    <div class="container">
+        <div class="owl-nav-wrapper">
+            <div class="owl-nav" id="big-gallery-nav"></div>
+        </div>
+        <!--end owl-nav-wrapper-->
+    </div>
+    <!--end container-->
+
+    <div class="logos">
+        <div class="owl-carousel" data-owl-nav="1" data-owl-dots="0" data-owl-items="5">
+            <div class="logo">
+                <a href="#"><img src="assets/img/logo-1.png" alt=""></a>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="assets/img/logo-2.png" alt=""></a>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="assets/img/logo-3.png" alt=""></a>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="assets/img/logo-4.png" alt=""></a>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="assets/img/logo-5.png" alt=""></a>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="assets/img/logo-6.png" alt=""></a>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="assets/img/logo-7.png" alt=""></a>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="assets/img/logo-8.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+*@

@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<div class="block-header">
+    <div class="header-section">
+        <h1>
+            Sayfa Düzenle<br />
+            <small></small>
+        </h1>
+    </div>
+</div>
+
+<form action="@Request.Url" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <input id="ID" name="ID" value="@ViewBag.model.ID" type="hidden" />
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Title">Başlık</label>
+        <div class="col-md-3">
+            <input id="Title" name="Title" value="@ViewBag.model.Title" maxlength="250" type="text" class="form-control" />
+            <span class="help-block">Boş Geçilemez</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Keywords">Kelimeler</label>
+        <div class="col-md-3">
+            <input id="Keywords" name="Keywords" value="@ViewBag.model.Keywords" maxlength="250" type="text" class="form-control" />
+            <span class="help-block">Virgülle ayırınız</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Description">Açıklama</label>
+        <div class="col-md-3">
+            <input id="Description" name="Description" value="@ViewBag.model.Description" maxlength="250" type="text" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Active">Aktif</label>
+        <div class="col-md-3">
+            <label class="switch switch-primary">
+                <input id="Active" name="Active" value="true" type="checkbox" @(ViewBag.model.Active ? "checked" : "")><span></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-2">
+            <a href="~/admin" class="btn btn-default"><i class="fa fa-times"></i> Vazgeç</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Kaydet</button>
+        </div>
+    </div>
+
+</form>

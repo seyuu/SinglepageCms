@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<div class="block-header">
+    <div class="row remove-margin">
+        <div class="col-md-10">
+            <div class="header-section">
+                <h1>
+                    @ViewBag.menu.Name<br />
+                    <small></small>
+                </h1>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a href="~/admin/menu/add/@ViewBag.menu.ID" class="header-link">
+                <h1 class="animation-pullDown">
+                    <i class="fa fa-plus animation-expandUp"></i><br><small>Ekle</small>
+                </h1>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Url</th>
+                <th>Blank</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in ViewBag.model) {
+                <tr>
+                    <td>@i.Title</td>
+                    <td>@i.Url</td>
+                    <td>@i.Blank</td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-sm">
+                            <a href="~/admin/menu/edit/@i.ID" class="btn btn-success"><i class="fa fa-pencil"></i> Düzenle</a>
+                            <a href="~/admin/menu/delete/@i.ID" class="btn btn-danger" onclick="return confirm('Kaydı silmek istediğinize emin misiniz?')"><i class="fa fa-times"></i> Sil</a>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,5 @@
+﻿<li><h2 class="sidebar-header">Sayfalar</h2></li>
+@foreach (var i in ViewBag.menus) {
+    <li><a href="~/Admin/Section/@i.ID"><i class="fa fa-code"></i>@i.Title</a></li>
+}
+<li><a href="~/admin/page/add"><i class="fa fa-plus"></i>Yeni Sayfa</a></li>

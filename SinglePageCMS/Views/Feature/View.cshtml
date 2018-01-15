@@ -1,0 +1,35 @@
+﻿
+@if (ViewBag.model.Icon) {
+    <div class="feature has-icon">
+        <i class="icon"><img src="~/Content/uploads/@ViewBag.model.Image" alt=""></i>
+        <div class="description">
+            <h3>@ViewBag.model.Title</h3>
+            <p>@ViewBag.model.Description</p>
+            @if (!string.IsNullOrEmpty(ViewBag.model.Link)) {
+                <a href="@ViewBag.model.Link" class="btn btn-primary btn-rounded arrow hover-effect">
+                    <span>
+                        <div class="hover-element">Daha fazla</div>
+                        <div class="hover-element">Daha fazla</div>
+                    </span>
+                </a>
+            }
+        </div>
+    </div>
+}
+else {
+    <div class="feature has-image">
+        <div class="image"><img src="~/Content/uploads/@ViewBag.model.Image" alt=""></div>
+        <div class="description">
+            <h3>@ViewBag.model.Title</h3>
+            <p>@ViewBag.model.Description</p>
+            @if (!string.IsNullOrEmpty(ViewBag.model.Link)) {
+                <a href="@ViewBag.model.Link" class="btn btn-primary btn-rounded arrow hover-effect">
+                    <span>
+                        <div class="hover-element">Daha fazla</div>
+                        <div class="hover-element">Daha fazla</div>
+                    </span>
+                </a>
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<div class="block-header">
+    <div class="header-section">
+        <h1>
+            Blok Düzenle<br />
+            <small></small>
+        </h1>
+    </div>
+</div>
+
+<form action="@Request.Url" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+    <input id="SectionID" name="SectionID" type="hidden" value="@ViewBag.model.SectionID" />
+
+    @if (ViewBag.model.ID == 0) {
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="Type">Tipi</label>
+            <div class="col-md-3">
+                <select id="Type " name="Type" class="form-control" size="1">
+                    <option></option>
+                    @foreach (var i in ViewBag.types) {
+                        <option @(ViewBag.model.Type == i ? "selected" : "")>@i</option>
+                    }
+                </select>
+            </div>
+        </div>
+    }
+
+    else {
+        <input id="Type" name="Type" type="hidden" value="@ViewBag.model.Type" />
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="Type">Tipi</label>
+            <div class="col-md-3">
+                <select class="form-control" size="1" disabled>
+                    <option></option>
+                    @foreach (var i in ViewBag.types) {
+                        <option @(ViewBag.model.Type == i ? "selected" : "")>@i</option>
+                    }
+                </select>
+            </div>
+        </div>
+    }
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Width">Genişlik</label>
+        <div class="col-md-3">
+            <select id="Width" name="Width" class="form-control" size="1">
+                @for (int i = 1; i <= 12; i++) {
+                    <option value="@i" @(i == ViewBag.model.Width ? "selected" : "")>@i Sütun</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-2">
+            <a href="~/admin/block/@ViewBag.model.SectionID" class="btn btn-default"><i class="fa fa-times"></i> Vazgeç</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Kaydet</button>
+        </div>
+    </div>
+
+</form>

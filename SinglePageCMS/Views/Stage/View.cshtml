@@ -1,0 +1,38 @@
+﻿@if (ViewBag.model.Status == 1) {
+    <div class="stage completed">
+        <div class="icon">
+            <i class="icon_check"></i>
+        </div>
+        <div class="description">
+            <h3>1. AŞAMA</h3>
+            <h2>@ViewBag.model.Title</h2>
+            <figure>@ViewBag.model.Description</figure>
+        </div>
+    </div>
+}
+
+else if (ViewBag.model.Status == 2) {
+    <div class="stage in-progress">
+        <div class="icon">
+            <i class="icon_hourglass"></i>
+        </div>
+        <div class="description">
+            <h3>2. AŞAMA</h3>
+            <h2>@ViewBag.model.Title</h2>
+            <figure>@ViewBag.model.Description</figure>
+        </div>
+    </div>
+}
+
+else if (ViewBag.model.Status == 3) {
+    <div class="stage not-completed">
+        <div class="icon">
+            <i class="icon_close"></i>
+        </div>
+        <div class="description">
+            <h3>3. AŞAMA</h3>
+            <h2>@ViewBag.model.Title</h2>
+            <figure>@ViewBag.model.Description</figure>
+        </div>
+    </div>
+}

@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<div class="block-header">
+    <div class="header-section">
+        <h1>
+            Stage<br />
+            <small></small>
+        </h1>
+    </div>
+</div>
+
+<form action="@Request.Url" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+    <input id="ID" name="ID" value="@ViewBag.model.ID" type="hidden" />
+    <input id="SectionID" name="SectionID" type="hidden" value="@ViewBag.model.SectionID" />
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Width">Genişlik</label>
+        <div class="col-md-3">
+            <select id="Width" name="Width" class="form-control" size="1">
+                @for (int i = 1; i <= 12; i++) {
+                    <option value="@i" @(i == ViewBag.model.Width ? "selected" : "")>@i Sütun</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Icon">Icon</label>
+        <div class="col-md-3">            
+            <input id="Icon" name="Icon" value="@ViewBag.model.Icon" maxlength="50" type="text" class="form-control" />
+            <span class="help-block">Boş Geçilemez</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Status">Status</label>
+        <div class="col-md-3">
+            <input id="Status" name="Status" value="@ViewBag.model.Status" type="text" class="form-control" />
+            <span class="help-block">Boş Geçilemez</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Title">Başlık</label>
+        <div class="col-md-3">
+            <input id="Title" name="Title" value="@ViewBag.model.Title" maxlength="150" type="text" class="form-control" />
+            <span class="help-block">Boş Geçilemez</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Description">Açıklama</label>
+        <div class="col-md-3">
+            <textarea id="Description" name="Description" rows="4" class="form-control">@ViewBag.model.Description</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-2">
+            <a href="~/admin/block/@ViewBag.model.SectionID" class="btn btn-default"><i class="fa fa-times"></i> Vazgeç</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Kaydet</button>
+        </div>
+    </div>
+
+</form>

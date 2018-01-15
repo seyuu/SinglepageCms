@@ -1,0 +1,4 @@
+﻿<li><h2 class="sidebar-header">Menüler</h2></li>
+@foreach (var i in ViewBag.menus) {
+    <li><a href="~/admin/menu/@i.ID"><i class="fa fa-coffee"></i>@i.Name</a></li>
+}
