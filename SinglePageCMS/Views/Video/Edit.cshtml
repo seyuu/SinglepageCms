@@ -3,11 +3,22 @@
 }
 
 <div class="block-header">
-    <div class="header-section">
-        <h1>
-            Video<br />
-            <small></small>
-        </h1>
+    <div class="row remove-margin">
+        <div class="col-md-8">
+            <div class="header-section">
+                <h1>Video Düzenle</h1>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a href="@Request.UrlReferrer" class="header-link">
+                <h1><i class="fa fa-fw fa-chevron-left"></i><small>Geri</small></h1>
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="javascript:$('form').submit()" class="header-link">
+                <h1><i class="fa fa-fw fa-check"></i><small>Kaydet</small></h1>
+            </a>
+        </div>
     </div>
 </div>
 
@@ -17,7 +28,7 @@
 
     <div class="form-group">
         <label class="col-md-2 control-label" for="Width">Genişlik</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <select id="Width" name="Width" class="form-control" size="1">
                 @for (int i = 1; i <= 12; i++) {
                     <option value="@i" @(i == ViewBag.model.Width ? "selected" : "")>@i Sütun</option>
@@ -28,23 +39,16 @@
 
     <div class="form-group">
         <label class="col-md-2 control-label" for="Thumbnail">Thumbnail</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <input id="Thumbnail" name="Thumbnail" value="@ViewBag.model.Thumbnail" maxlength="250" type="text" class="form-control" />
             <span class="help-block">Boş Geçilemez</span>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-2 control-label" for="URL">URL</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <input id="URL" name="URL" value="@ViewBag.model.URL" maxlength="250" type="text" class="form-control" />
             <span class="help-block">Boş Geçilemez</span>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-5 col-md-offset-2">
-            <a href="~/admin/block/@ViewBag.model.SectionID" class="btn btn-default"><i class="fa fa-times"></i> Vazgeç</a>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Kaydet</button>
-        </div>
-    </div>
-
 </form>

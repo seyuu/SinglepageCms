@@ -4,19 +4,19 @@
 
 <div class="block-header">
     <div class="row remove-margin">
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="header-section">
-                <h1>
-                    Resimler<br />
-                    <small></small>
-                </h1>
+                <h1>Büyük Slayt Resimler</h1>
             </div>
         </div>
         <div class="col-md-2">
-            <a href="~/admin/slide/itemadd/@ViewBag.slideID" class="header-link">
-                <h1 class="animation-pullDown">
-                    <i class="fa fa-plus animation-expandUp"></i><br><small>Ekle</small>
-                </h1>
+            <a href="@Request.UrlReferrer" class="header-link">
+                <h1><i class="fa fa-fw fa-chevron-left"></i><small>Geri</small></h1>
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="~/admin/slide/itemadd/@ViewBag.BlockID" class="header-link">
+                <h1><i class="fa fa-fw fa-plus"></i><small>Ekle</small></h1>
             </a>
         </div>
     </div>

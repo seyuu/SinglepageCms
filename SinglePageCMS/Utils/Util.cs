@@ -11,80 +11,24 @@ using System.IO;
 using System.Web.Helpers;
 using System.Net.Mail;
 using System.Net;
+using System.Web.SessionState;
 
 public static class Util {
 
-    ////==================================================
-    ////KULLANICI
-    ////==================================================
+    ///==================================================
+    ///KULLANICI
+    ///==================================================
+    public static bool oturumAcikmi() {
+        return session["oturum"] != null;
+    }
 
-    //public static bool oturumAcikmi() {
-    //    return context.User.Identity.IsAuthenticated;
-    //}
+    public static void oturumAc(object data) {
+        session["oturum"] = data;
+    }
 
-    //public static int kullaniciID() {
-    //    var ID = 0;
-    //    int.TryParse(context.User.Identity.Name, out ID);
-    //    return ID;
-    //}
-
-    //public static string kullaniciAdi() {
-    //    var kullanici = Util.kullanici();
-    //    return kullanici == null ? "" : kullanici.AdSoyad;
-    //}
-
-    //public static Kullanici kullanici() {
-    //    var kullaniciID = Util.kullaniciID();
-    //    if (kullaniciID > 0) {
-    //        using (var db = new Db()) {
-    //            return db.Kullanici.Find(kullaniciID);
-    //        }
-    //    }
-    //    return null;
-    //}
-
-    //public static Rol[] kullaniciRolleri() {
-    //    var kullaniciID = Util.kullaniciID();
-    //    if (kullaniciID == 0) return null;
-    //    using (var db = new Db()) {
-    //        return db.KullaniciRol.Where(i => i.KullaniciID == kullaniciID).Select(i => i.Rol).ToArray();
-    //    }
-    //}
-
-
-    //public static bool roldemi(params string[] roller) {
-
-    //    //kullanıcı bul
-    //    var kullaniciID = Util.kullaniciID();
-    //    if (kullaniciID == 0) return false;
-
-    //    //kontrol et
-    //    using (var db = new Db()) {
-    //        return db.KullaniciRol.Any(i => i.KullaniciID == kullaniciID && roller.Contains(i.Rol.Adi));
-    //    }
-
-    //}
-
-    //public static bool yetkilimi(params string[] yetki) {
-
-    //    //kullanıcı bul
-    //    var kullaniciID = Util.kullaniciID();
-    //    if (kullaniciID == 0) return false;
-
-    //    //null ise oturum acmasi yeterli
-    //    if (yetki.Length == 0) return true;
-
-    //    //yetkileri al
-    //    var kullanıcıYetkileri = context.Session["yetkiler"] as string[];
-    //    if (kullanıcıYetkileri == null) {
-    //        using (var db = new Db()) {
-    //            kullanıcıYetkileri = db.KullaniciRol.Where(i => i.KullaniciID == kullaniciID).SelectMany(i => i.Rol.RolYetki).Select(i => i.Yetki.Adi).ToArray();
-    //        }
-    //    }
-
-    //    //kontrol et
-    //    return kullanıcıYetkileri.Any(i => yetki.Contains(i));
-    //}
+    public static void oturumKapat() {
+        session["oturum"] = null;
+    }
 
     //==================================================
     //UPLOAD
@@ -389,6 +333,24 @@ public static class Util {
     public static HttpContext context {
         get {
             return HttpContext.Current;
+        }
+    }
+
+    public static HttpRequest request {
+        get {
+            return context.Request;
+        }
+    }
+
+    public static HttpResponse response {
+        get {
+            return context.Response;
+        }
+    }
+
+    public static HttpSessionState session {
+        get {
+            return context.Session;
         }
     }
 

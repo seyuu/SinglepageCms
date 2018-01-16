@@ -36,10 +36,8 @@
                         <!--end left-->
                         <div class="right">
                             <ul class="nav navigation-links animate">
-                                @foreach (var i in ViewBag.sections) {
-                                    if (i.Menu) {
-                                        <li><a href="#section-@i.ID" class="scroll">@i.Title</a></li>
-                                    }
+                                @foreach (var i in ViewBag.UstMenu) {
+                                    <li><a href="#section-@i.ID" class="scroll">@i.Title</a></li>
                                 }
                             </ul>
                             <div class="nav-btn">
@@ -104,7 +102,6 @@
 
                     <div class="@(i.Full ? "" : "container")">
                         <h2>@i.Title</h2>
-                        <p>@i.Description</p>
                         <div class="row">
                             @foreach (var j in ((IEnumerable<dynamic>) i.Block).OrderBy(x => x.No)) {
                                 <div class="col-md-@j.Width col-sm-@j.Width">

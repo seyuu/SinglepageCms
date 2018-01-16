@@ -3,6 +3,7 @@ using System.Linq;
 using SinglePageCMS.Models;
 using System.Reflection;
 using System;
+using System.Data.Entity;
 
 public class BaseBlockController<T> : BaseController where T : Block, new() {
 
@@ -12,7 +13,7 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
         return PartialView();
     }
 
-
+    [Oturum]
     [Route("Admin/{asd}/Add/{SectionID:int}")]
     public ActionResult Add(int SectionID) {
         var model = new T();
@@ -23,6 +24,7 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
         return View("Edit");
     }
 
+    [Oturum]
     [HttpPost]
     [Route("Admin/{asd}/Add/{SectionID:int}")]
     public ActionResult Add(T model) {
@@ -45,12 +47,14 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
 
     }
 
+    [Oturum]
     [Route("Admin/{asd}/Edit/{ID:int}")]
     public ActionResult Edit(int ID) {
         ViewBag.model = db.Block.Find(ID);
         return View();
     }
 
+    [Oturum]
     [HttpPost]
     [Route("Admin/{asd}/Edit/{ID:int}")]
     public ActionResult Edit(T model) {

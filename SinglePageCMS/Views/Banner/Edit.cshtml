@@ -29,7 +29,7 @@
 
     <div class="form-group">
         <label class="col-md-1 control-label" for="Width">Genişlik</label>
-        <div class="col-md-10">
+        <div class="col-md-9">
             <select id="Width" name="Width" class="form-control" size="1">
                 @for (int i = 1; i <= 12; i++) {
                     <option value="@i" @(i == ViewBag.model.Width ? "selected" : "")>@i Sütun</option>
@@ -40,7 +40,7 @@
 
     <div class="form-group">
         <label class="col-md-1 control-label" for="Title">Başlık</label>
-        <div class="col-md-10">
+        <div class="col-md-9">
             <input id="Title" name="Title" value="@ViewBag.model.Title" maxlength="150" type="text" class="form-control" />
             <span class="help-block">Boş Geçilemez</span>
         </div>

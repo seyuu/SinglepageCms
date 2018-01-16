@@ -696,6 +696,7 @@
     <Compile Include="Utils\BaseController.cs" />
     <Compile Include="Utils\Db.cs" />
     <Compile Include="Utils\Util.cs" />
+    <Compile Include="Utils\Yetki.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -798,6 +799,7 @@
     <Content Include="Views\Page\AdminMenu.cshtml" />
     <Content Include="Views\Page\Edit.cshtml" />
     <Content Include="Views\Menu\Edit.cshtml" />
+    <Content Include="Views\Admin\Anasayfa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

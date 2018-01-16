@@ -9,7 +9,7 @@
 </div>*@
 
 <div class="owl-carousel big-gallery" data-owl-items="3" data-owl-auto-width="1" data-owl-nav="1" data-owl-dots="0" data-owl-center="1" data-owl-loop="1" data-owl-nav-container="#projelerNav1" data-owl-autoplay="1">
-    @foreach (var i in ViewBag.model.SlideItem) {
+    @foreach (var i in ViewBag.model.BlockItem) {
         <img src="~/content/uploads/@(i.Image)" alt="">
     }
 </div>
