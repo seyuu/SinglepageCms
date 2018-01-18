@@ -6,8 +6,10 @@ public class SectionController : BaseController {
 
     [Route("Admin/Section/{PageID:int}")]
     public ActionResult Index(int PageID) {
+
         ViewBag.page = db.Page.Find(PageID);
         ViewBag.types = new[]  {
+            "Accordion",
             "Banner",
             "Feature",
             "Form",

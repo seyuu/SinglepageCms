@@ -26,6 +26,7 @@ namespace SinglePageCMS.Models
         public string Title { get; set; }
         public bool Invert { get; set; }
         public bool Full { get; set; }
+        public string Container { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Block> Block { get; set; }

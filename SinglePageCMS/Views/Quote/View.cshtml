@@ -1,26 +1,20 @@
-﻿<div class="owl-carousel" data-owl-nav="0" data-owl-dots="1">
-    <blockquote>
-        <p>Sed vel lorem et velit dictum rhoncus eget sed orci. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
-        <footer>
-            John Doe
-            <figure>River Side Apartments</figure>
-        </footer>
-    </blockquote>
-    <!--end blockquote-->
-    <blockquote>
-        <p>Ut ornare in dolor sit amet mollis. Aliquam molestie venenatis mi in efficitur. Lorem ipsum dolor sit amet</p>
-        <footer>
-            Peter Brown
-            <figure>LTJ Investments</figure>
-        </footer>
-    </blockquote>
-    <!--end blockquote-->
-    <blockquote>
-        <p>Quisque eleifend tempor odio, sit amet maximus tortor hendrerit sollicitudin. Quisque mollis non justo id bibendum</p>
-        <footer>
-            Suzane J. Bright
-            <figure>Archits Company</figure>
-        </footer>
-    </blockquote>
-    <!--end blockquote-->
+﻿<div class="testimonials">
+    <div class="row">
+        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+            <div class="owl-carousel"
+                 data-owl-nav="0"
+                 data-owl-dots="1"
+                 data-owl-autoplay="@(ViewBag.model.Autoplay ?1:0)">
+                @foreach (var i in ViewBag.model.BlockItem) {
+                    <blockquote>
+                        <p>@i.Title</p>
+                        <footer>
+                            @i.Name
+                            <figure>@i.Description</figure>
+                        </footer>
+                    </blockquote>
+                }
+            </div>
+        </div>
+    </div>
 </div>

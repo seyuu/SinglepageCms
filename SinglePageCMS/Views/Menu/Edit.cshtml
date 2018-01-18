@@ -28,7 +28,7 @@
 
     <div class="form-group">
         <label class="col-md-2 control-label" for="Title">Başlık</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <input id="Title" name="Title" value="@ViewBag.model.Title" maxlength="50" type="text" class="form-control" />
             <span class="help-block">Boş Geçilemez</span>
         </div>
@@ -36,11 +36,11 @@
     @*ahsap-dograma-{ID}#213*@
     <div class="form-group">
         <label class="col-md-2 control-label" for="type">Tip</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <select id="Url" name="Url" class="form-control" size="1">
                 <option value="">Harici URL</option>
                 @foreach (var i in ViewBag.pages) {
-                    var pageURL = "~/" + Util.urlYap(i.Title) + "-" + i.ID;
+                    var pageURL = Util.urlYap(i.Title) + "-" + i.ID;
                     <option value="@pageURL" @(pageURL == ViewBag.model.Url ? "selected" : "")>@i.Title</option>
                     foreach (var j in i.Section) {
                         var sectionURL = pageURL + "#" + j.ID;
@@ -53,14 +53,14 @@
 
     <div id="urlGroup" class="form-group">
         <label class="col-md-2 control-label" for="ExternalUrl">Harici URL</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <input id="ExternalUrl" name="ExternalUrl" value="@ViewBag.ExternalUrl" maxlength="250" type="text" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-2 control-label" for="Blank">Blank</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <label class="switch switch-primary">
                 <input id="Blank" name="Blank" value="true" type="checkbox" @(ViewBag.model.Blank ? "checked" : "")><span></span>
             </label>

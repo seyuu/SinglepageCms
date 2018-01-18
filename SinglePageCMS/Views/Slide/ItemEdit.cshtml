@@ -28,7 +28,7 @@
 
     <div class="form-group">
         <label class="col-md-2 control-label" for="Title">Başlık</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <input id="Title" name="Title" value="@ViewBag.model.Title" maxlength="150" type="text" class="form-control" />
             <span class="help-block">Boş Geçilemez</span>
         </div>
@@ -36,7 +36,7 @@
 
     <div class="form-group">
         <label class="col-md-2 control-label" for="Description">Açıklama</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <textarea id="Description" name="Description" rows="4" class="form-control">@ViewBag.model.Description</textarea>
         </div>
     </div>
@@ -49,11 +49,5 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <div class="col-md-5 col-md-offset-2">
-            <a href="~/admin/slide/@ViewBag.model.ID" class="btn btn-default"><i class="fa fa-times"></i> Vazgeç</a>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Kaydet</button>
-        </div>
-    </div>
 
 </form>

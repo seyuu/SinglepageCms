@@ -18,7 +18,7 @@
 }
 else {
     <div class="feature has-image">
-        <div class="image"><img src="~/Content/uploads/@ViewBag.model.Image" alt=""></div>
+        <div class="image"> @Util.thumbnail(ViewBag.model.Image, 360, 180)</div>
         <div class="description">
             <h3>@ViewBag.model.Title</h3>
             <p>@ViewBag.model.Description</p>

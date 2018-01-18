@@ -6,7 +6,7 @@
     <div class="row remove-margin">
         <div class="col-md-8">
             <div class="header-section">
-                <h1>Dipnotlar</h1>
+                <h1>Alıntılar</h1>
             </div>
         </div>
         <div class="col-md-2">
@@ -26,17 +26,17 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>İsim</th>
-                <th>Başlık</th>
-                <th>Aciklama</th>
+                <th>Söz</th>
+                <th>Sözün Sahibi</th>
+                <th>Ünvanı</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var i in ViewBag.model) {
                 <tr>
-                    <td>@i.Name</td>
                     <td>@i.Title</td>
+                    <td>@i.Name</td>
                     <td>@i.Description</td>
                     <td class="text-center">
                         <div class="btn-group btn-group-sm">

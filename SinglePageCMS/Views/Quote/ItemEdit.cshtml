@@ -6,7 +6,7 @@
     <div class="row remove-margin">
         <div class="col-md-8">
             <div class="header-section">
-                <h1>Dipnot Detay Düzenle</h1>
+                <h1>Alıntı Detay Düzenle</h1>
             </div>
         </div>
         <div class="col-md-2">
@@ -25,36 +25,32 @@
 <form action="@Request.Url" method="post" enctype="multipart/form-data" class="form-horizontal">
 
     <input id="ID" name="ID" value="@ViewBag.model.ID" type="hidden" />
-    <input id="QuoteID" name="QuoteID" type="hidden" value="@ViewBag.model.QuoteID" />
+    <input id="BlockID" name="BlockID" type="hidden" value="@ViewBag.model.BlockID" />
+
+    
 
     <div class="form-group">
-        <label class="col-md-2 control-label" for="Name">İsim</label>
-        <div class="col-md-3">
-            <input id="Name" name="Name" value="@ViewBag.model.Name" maxlength="150" type="text" class="form-control" />
-            <span class="help-block">Boş Geçilemez</span>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-md-2 control-label" for="Title">Başlık</label>
-        <div class="col-md-3">
+        <label class="col-md-2 control-label" for="Title">Söz</label>
+        <div class="col-md-9">
             <input id="Title" name="Title" value="@ViewBag.model.Title" maxlength="150" type="text" class="form-control" />
             <span class="help-block">Boş Geçilemez</span>
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-md-2 control-label" for="Description">Açıklama</label>
-        <div class="col-md-3">
-            <textarea id="Description" name="Description" rows="4" class="form-control">@ViewBag.model.Description</textarea>
+        <label class="col-md-2 control-label" for="Name">Söz Sahibi</label>
+        <div class="col-md-9">
+            <input id="Name" name="Name" value="@ViewBag.model.Name" maxlength="150" type="text" class="form-control" />
+            <span class="help-block">Boş Geçilemez</span>
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-md-5 col-md-offset-2">
-            <a href="~/admin/quote/@ViewBag.model.ID" class="btn btn-default"><i class="fa fa-times"></i> Vazgeç</a>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Kaydet</button>
+        <label class="col-md-2 control-label" for="Description">Ünvanı</label>
+        <div class="col-md-9">
+            <input id="Description" name="Description" value="@ViewBag.model.Description" type="text" class="form-control" />
         </div>
     </div>
+
 
 </form>

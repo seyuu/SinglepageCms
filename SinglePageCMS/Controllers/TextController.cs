@@ -1,9 +1,4 @@
-﻿using System.Web.Mvc;
-using System.Linq;
-using SinglePageCMS.Models;
-using System.Reflection;
-using System;
-
+﻿using SinglePageCMS.Models;
 
 public class TextController : BaseBlockController<Text> {
 

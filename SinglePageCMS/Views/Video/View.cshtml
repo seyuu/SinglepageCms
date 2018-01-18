@@ -1,16 +1,11 @@
-﻿<a href="@ViewBag.model.URL" class="video-player hover-effect">
-    <span>
-        <div class="hover-element">
-            <i class="play-icon arrow_triangle-right"></i>
-            <div class="has-overlay">
-                <img src="~/content/upload/@ViewBag.model.Thumbnail" alt="">
-            </div>
-        </div>
-        <div class="hover-element">
-            <i class="play-icon arrow_triangle-right"></i>
-            <div class="has-overlay">
-                <img src="~/content/admin/img/image-video.jpg" alt="">
-            </div>
-        </div>
-    </span>
+﻿<a href="@ViewBag.model.URL" class="video-player video-popup" data-scroll-reveal="enter bottom and move 50px" data-scroll-reveal-initialized="true" data-scroll-reveal-complete="true">
+    <i class="play-icon arrow_triangle-right"></i>
+    <div class="has-overlay">
+        @if (string.IsNullOrEmpty(ViewBag.model.Thumbnail)) {
+            <img src="~/content/img/image-video.jpg" alt="">
+        }
+        else {
+            <img src="@ViewBag.model.Thumbnail" alt="">
+        }
+    </div>
 </a>

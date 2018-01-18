@@ -25,11 +25,10 @@
 <form action="@Request.Url" method="post" enctype="multipart/form-data" class="form-horizontal">
 
     <input id="ID" name="ID" value="@ViewBag.model.ID" type="hidden" />
-    <input id="SlideID" name="SlideID" type="hidden" value="@ViewBag.model.SlideID" />
-
+    <input id="BlockID" name="BlockID" type="hidden" value="@ViewBag.model.BlockID" />
     <div class="form-group">
         <label class="col-md-2 control-label" for="Title">Başlık</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <input id="Title" name="Title" value="@ViewBag.model.Title" maxlength="150" type="text" class="form-control" />
             <span class="help-block">Boş Geçilemez</span>
         </div>
@@ -37,7 +36,7 @@
 
     <div class="form-group">
         <label class="col-md-2 control-label" for="Description">Açıklama</label>
-        <div class="col-md-3">
+        <div class="col-md-9">
             <textarea id="Description" name="Description" rows="4" class="form-control">@ViewBag.model.Description</textarea>
         </div>
     </div>

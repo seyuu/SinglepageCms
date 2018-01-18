@@ -14,7 +14,7 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
     }
 
     [Oturum]
-    [Route("Admin/{asd}/Add/{SectionID:int}")]
+    [ValidateInput(false)]
     public ActionResult Add(int SectionID) {
         var model = new T();
         ViewBag.model = new T() {
@@ -26,13 +26,22 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
 
     [Oturum]
     [HttpPost]
-    [Route("Admin/{asd}/Add/{SectionID:int}")]
+    [ValidateInput(false)]
     public ActionResult Add(T model) {
 
         //hata
         if (!ModelState.IsValid) {
             ViewBag.model = model;
             return View("Edit");
+        }
+
+        //resim yükle
+        foreach (string name in Request.Files.Keys) {
+            var type = model.GetType();
+            var prop = type.GetProperty(name);
+            if (prop.PropertyType == typeof(string)) {
+                prop.SetValue(model, Util.resimYukle(name, (string)prop.GetValue(model)));
+            }
         }
 
         //kaydet
@@ -48,7 +57,7 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
     }
 
     [Oturum]
-    [Route("Admin/{asd}/Edit/{ID:int}")]
+    [ValidateInput(false)]
     public ActionResult Edit(int ID) {
         ViewBag.model = db.Block.Find(ID);
         return View();
@@ -56,13 +65,22 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
 
     [Oturum]
     [HttpPost]
-    [Route("Admin/{asd}/Edit/{ID:int}")]
+    [ValidateInput(false)]
     public ActionResult Edit(T model) {
 
         //hata
         if (!ModelState.IsValid) {
             ViewBag.model = model;
             return View();
+        }
+
+        //resim yükle
+        foreach (string name in Request.Files.Keys) {
+            var type = model.GetType();
+            var prop = type.GetProperty(name);
+            if (prop.PropertyType == typeof(string)) {
+                prop.SetValue(model, Util.resimYukle(name, (string)prop.GetValue(model)));
+            }
         }
 
         //kaydet

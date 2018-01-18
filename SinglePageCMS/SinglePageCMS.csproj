@@ -576,6 +576,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccordionController.cs" />
     <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\FeatureController.cs" />
     <Compile Include="Controllers\FormController.cs" />
@@ -596,6 +597,12 @@
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accordion.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccordionItems.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Banner.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -800,6 +807,12 @@
     <Content Include="Views\Page\Edit.cshtml" />
     <Content Include="Views\Menu\Edit.cshtml" />
     <Content Include="Views\Admin\Anasayfa.cshtml" />
+    <Content Include="Views\Default\Index - Copy.cshtml" />
+    <Content Include="Views\Accordion\Edit.cshtml" />
+    <Content Include="Views\Accordion\View.cshtml" />
+    <Content Include="Views\Accordion\ItemEdit.cshtml" />
+    <Content Include="Views\Accordion\Items.cshtml" />
+    <Content Include="Views\Accordion\Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

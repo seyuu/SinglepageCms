@@ -23,7 +23,7 @@
 </div>
 
 <form action="@Request.Url" method="post" enctype="multipart/form-data" class="form-horizontal">
-
+    <input id="PageID" name="PageID" type="hidden" value="@ViewBag.model.PageID" />
     <div class="form-group">
         <label class="col-md-2 control-label" for="Title">Başlık</label>
         <div class="col-md-9">

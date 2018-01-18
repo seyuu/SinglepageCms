@@ -1,34 +1,22 @@
 ﻿<form id="form-contact-agent" method="post" class="clearfix">
-    <div class="row">
-        <div class="col-md-6 col-sm-6">
-            <div class="form-group">
-                <input type="text" class="form-control" id="form-contact-agent-name" name="name" placeholder="Your Name" required="">
+    
+    @foreach (var i in ViewBag.model.BlockItem) {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @if (i.Type == "text") {
+                        <input type="email" class="form-control" id="field-@i.ID" name="field-@i.ID" placeholder="@i.Title" @(i.Required?"required":"")>
+                    }
+                    else {
+                        <textarea class="form-control" id="field-@i.ID" rows="6" name="field-@i.ID" placeholder="@i.Title" @(i.Required?"required":"")></textarea>
+                    }
+                </div>
             </div>
-            <!--end form-group -->
         </div>
-        <!--end col-md-6 col-sm-6 -->
-        <div class="col-md-6 col-sm-6">
-            <div class="form-group">
-                <input type="email" class="form-control" id="form-contact-agent-email" name="email" placeholder="Your Email" required="">
-            </div>
-            <!--end form-group -->
-        </div>
-        <!--end col-md-6 col-sm-6 -->
-    </div>
-    <!--end row -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <textarea class="form-control" id="form-contact-agent-message" rows="6" name="message" placeholder="Your Message" required=""></textarea>
-            </div>
-            <!--end form-group -->
-        </div>
-        <!--end col-md-12 -->
-    </div>
-    <!--end row -->
+    }
+   
     <div class="form-group clearfix">
-        <button type="submit" class="btn pull-right btn-primary btn-rounded hover-effect" id="form-contact-agent-submit"><span><div class="hover-element">Send a Message</div><div class="hover-element">Send a Message</div></span></button>
+        <button type="submit" class="btn pull-right btn-primary btn-rounded" id="form-contact-agent-submit">Gönder</button>
     </div>
-    <!--end form-group -->
-    <div id="form-contact-agent-status"></div>
+
 </form>

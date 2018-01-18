@@ -40,21 +40,21 @@
     <div class="form-group">
         <label class="col-md-2 control-label" for="Email">Email</label>
         <div class="col-md-9">
-            <textarea id="Email" name="Email" rows="4" class="form-control">@ViewBag.model.Email</textarea>
+            <input id="Email" name="Email" value="@ViewBag.model.Email" maxlength="150" type="text" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-2 control-label" for="Subject">Konu</label>
         <div class="col-md-9">
-            <textarea id="Subject" name="Subject" rows="4" class="form-control">@ViewBag.model.Subject</textarea>
+            <input id="Subject" name="Subject" value="@ViewBag.model.Subject" maxlength="150" type="text" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-2 control-label" for="Description">İçerik</label>
         <div class="col-md-9">
-            <textarea id="Description" name="Description" rows="4" class="form-control">@ViewBag.model.Description</textarea>
+            <input id="Description" name="Description" value="@ViewBag.model.Description" maxlength="150" type="text" class="form-control" />
         </div>
     </div>
 </form>

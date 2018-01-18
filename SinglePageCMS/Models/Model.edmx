@@ -5,6 +5,20 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SinglePageCMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accordion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccordionItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Banner">
           <Key>
             <PropertyRef Name="ID" />
@@ -182,6 +196,7 @@
           <Property Name="Title" Type="nvarchar" MaxLength="150" />
           <Property Name="Invert" Type="bit" Nullable="false" />
           <Property Name="Full" Type="bit" Nullable="false" />
+          <Property Name="Container" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Slide">
           <Key>
@@ -238,6 +253,30 @@
           <Property Name="Thumbnail" Type="nvarchar" MaxLength="250" />
           <Property Name="URL" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Accordion_Block1">
+          <End Role="Block" Type="Self.Block" Multiplicity="1" />
+          <End Role="Accordion" Type="Self.Accordion" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Block">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accordion">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccordionItems_BlockItem">
+          <End Role="BlockItem" Type="Self.BlockItem" Multiplicity="1" />
+          <End Role="AccordionItems" Type="Self.AccordionItems" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BlockItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AccordionItems">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Banner_Block">
           <End Role="Block" Type="Self.Block" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -547,6 +586,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SinglePageCMSModelStoreContainer">
+          <EntitySet Name="Accordion" EntityType="Self.Accordion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccordionItems" EntityType="Self.AccordionItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BigSlide" EntityType="Self.BigSlide" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BigSlideItem" EntityType="Self.BigSlideItem" Schema="dbo" store:Type="Tables" />
@@ -573,6 +614,14 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Text" EntityType="Self.Text" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accordion_Block1" Association="Self.FK_Accordion_Block1">
+            <End Role="Block" EntitySet="Block" />
+            <End Role="Accordion" EntitySet="Accordion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccordionItems_BlockItem" Association="Self.FK_AccordionItems_BlockItem">
+            <End Role="BlockItem" EntitySet="BlockItem" />
+            <End Role="AccordionItems" EntitySet="AccordionItems" />
+          </AssociationSet>
           <AssociationSet Name="FK_Banner_Block" Association="Self.FK_Banner_Block">
             <End Role="Block" EntitySet="Block" />
             <End Role="Banner" EntitySet="Banner" />
@@ -754,6 +803,14 @@
           <AssociationSet Name="FK_MenuItem_Menu" Association="SinglePageCMSModel.FK_MenuItem_Menu">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="MenuItem" EntitySet="MenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accordion_Block1" Association="SinglePageCMSModel.FK_Accordion_Block1">
+            <End Role="Block" EntitySet="Block" />
+            <End Role="Accordion" EntitySet="Block" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccordionItems_BlockItem" Association="SinglePageCMSModel.FK_AccordionItems_BlockItem">
+            <End Role="BlockItem" EntitySet="BlockItem" />
+            <End Role="AccordionItems" EntitySet="BlockItem" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="BigSlideItem" BaseType="SinglePageCMSModel.BlockItem">
@@ -1108,6 +1165,7 @@
           <Property Name="Full" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Block" Relationship="SinglePageCMSModel.FK_Modul_Section" FromRole="Section" ToRole="Block" />
           <NavigationProperty Name="Page" Relationship="SinglePageCMSModel.FK_Section_Page" FromRole="Section" ToRole="Page" />
+          <Property Name="Container" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Modul_Section">
           <End Type="SinglePageCMSModel.Section" Role="Section" Multiplicity="1" />
@@ -1162,6 +1220,36 @@
             </Principal>
             <Dependent Role="MenuItem">
               <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Accordion" BaseType="SinglePageCMSModel.Block">
+        </EntityType>
+        <EntityType Name="AccordionItems" BaseType="SinglePageCMSModel.BlockItem">
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Accordion_Block1">
+          <End Type="SinglePageCMSModel.Block" Role="Block" Multiplicity="1" />
+          <End Type="SinglePageCMSModel.Accordion" Role="Accordion" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Block">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accordion">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccordionItems_BlockItem">
+          <End Type="SinglePageCMSModel.BlockItem" Role="BlockItem" Multiplicity="1" />
+          <End Type="SinglePageCMSModel.AccordionItems" Role="AccordionItems" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BlockItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AccordionItems">
+              <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1272,6 +1360,11 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(SinglePageCMSModel.Accordion)">
+              <MappingFragment StoreEntitySet="Accordion">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BlockItem">
             <EntityTypeMapping TypeName="IsTypeOf(SinglePageCMSModel.BlockItem)">
@@ -1331,6 +1424,13 @@
                 <ScalarProperty Name="Required" ColumnName="Required" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(SinglePageCMSModel.AccordionItems)">
+              <MappingFragment StoreEntitySet="AccordionItems">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="SinglePageCMSModel.sysdiagrams">
@@ -1365,6 +1465,7 @@
           <EntitySetMapping Name="Section">
             <EntityTypeMapping TypeName="SinglePageCMSModel.Section">
               <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="Container" ColumnName="Container" />
                 <ScalarProperty Name="Full" ColumnName="Full" />
                 <ScalarProperty Name="Invert" ColumnName="Invert" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
