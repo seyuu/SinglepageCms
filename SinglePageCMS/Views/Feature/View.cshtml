@@ -6,13 +6,8 @@
             <h3>@ViewBag.model.Title</h3>
             <p>@ViewBag.model.Description</p>
             @if (!string.IsNullOrEmpty(ViewBag.model.Link)) {
-                <a href="@ViewBag.model.Link" class="btn btn-primary btn-rounded arrow hover-effect">
-                    <span>
-                        <div class="hover-element">Daha fazla</div>
-                        <div class="hover-element">Daha fazla</div>
-                    </span>
-                </a>
-            }
+                <a href="@ViewBag.model.Link" class="btn btn-primary btn-rounded btn-framed arrow hover-effect">Daha fazla</a>
+             }
         </div>
     </div>
 }
@@ -23,12 +18,7 @@ else {
             <h3>@ViewBag.model.Title</h3>
             <p>@ViewBag.model.Description</p>
             @if (!string.IsNullOrEmpty(ViewBag.model.Link)) {
-                <a href="@ViewBag.model.Link" class="btn btn-primary btn-rounded arrow hover-effect">
-                    <span>
-                        <div class="hover-element">Daha fazla</div>
-                        <div class="hover-element">Daha fazla</div>
-                    </span>
-                </a>
+                <a href="@ViewBag.model.Link" class="btn btn-primary btn-rounded btn-framed arrow hover-effect">Daha fazla</a>
             }
         </div>
     </div>

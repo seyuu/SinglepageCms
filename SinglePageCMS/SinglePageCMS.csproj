@@ -584,10 +584,12 @@
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\ProjeController.cs" />
     <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Controllers\BigSlideController.cs" />
     <Compile Include="Controllers\SlideController.cs" />
     <Compile Include="Controllers\StageController.cs" />
+    <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Controllers\TextController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BlockController.cs" />
@@ -668,6 +670,12 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Page.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Proje.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjeItem.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Quote.cs">
@@ -813,6 +821,11 @@
     <Content Include="Views\Accordion\ItemEdit.cshtml" />
     <Content Include="Views\Accordion\Items.cshtml" />
     <Content Include="Views\Accordion\Menu.cshtml" />
+    <Content Include="Views\Proje\Edit.cshtml" />
+    <Content Include="Views\Proje\ItemEdit.cshtml" />
+    <Content Include="Views\Proje\Items.cshtml" />
+    <Content Include="Views\Proje\Menu.cshtml" />
+    <Content Include="Views\Proje\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

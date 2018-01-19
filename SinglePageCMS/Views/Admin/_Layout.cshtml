@@ -73,6 +73,7 @@
                     @Html.Action("AdminMenu", "Menu")
 
                     <li><h2 class="sidebar-header">Diğer</h2></li>
+                    <li><a href="~/Admin/Bildiri"><i class="fa fa-newspaper-o"></i> Bildiri</a></li>
                     <li><a href="~/Admin/Settings"><i class="fa fa-cog"></i> Ayarlar</a></li>
                     <li><a href="~/" target="_blank"><i class="fa fa-envelope-o"></i> Site</a></li>
                     <li><a href="~/admin/cikis"><i class="fa fa-power-off"></i>Çıkış</a></li>
@@ -265,6 +266,7 @@
     <script src="/Content/admin/js/main.js"></script>
 
     @RenderSection("scripts", false)
+    <script src="/Content/admin/js/ckeditor/ckeditor.js"></script>
 
 </body>
 </html>

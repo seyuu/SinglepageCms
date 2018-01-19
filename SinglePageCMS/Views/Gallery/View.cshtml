@@ -1,60 +1,14 @@
 ﻿<div class="gallery">
     <div class="row">
-
-        <div class="col-md-4 col-sm-4">
-            <a href="content/img/gallery-big-01.jpg" class="gallery-item image-popup">
-                <div class="image bg-transfer" style="background-image: url(&quot;content/img/gallery-03.jpg&quot;);">
-                    <img src="content/img/gallery-03.jpg" alt="">
-                </div>
-            </a>
-        </div>
-
-        <!--end col-md-4-->
-        <div class="col-md-4 col-sm-4">
-            <a href="content/img/gallery-big-01.jpg" class="gallery-item image-popup">
-                <div class="image bg-transfer" style="background-image: url(&quot;content/img/gallery-04.jpg&quot;);">
-                    <img src="content/img/gallery-04.jpg" alt="">
-                </div>
-            </a>
-            <!--end gallery-item-->
-        </div>
-        <!--end col-md-4-->
-        <div class="col-md-4 col-sm-4">
-            <a href="content/img/gallery-big-01.jpg" class="gallery-item image-popup">
-                <div class="image bg-transfer" style="background-image: url(&quot;content/img/gallery-05.jpg&quot;);">
-                    <img src="content/img/gallery-05.jpg" alt="">
-                </div>
-            </a>
-            <!--end gallery-item-->
-        </div>
-        <!--end col-md-4-->
-        <div class="col-md-4 col-sm-4">
-            <a href="content/img/gallery-big-01.jpg" class="gallery-item image-popup">
-                <div class="image bg-transfer" style="background-image: url(&quot;content/img/image-video.jpg&quot;);">
-                    <img src="content/img/image-video.jpg" alt="">
-                </div>
-            </a>
-            <!--end gallery-item-->
-        </div>
-        <!--end col-md-4-->
-        <div class="col-md-4 col-sm-4">
-            <a href="content/img/gallery-big-01.jpg" class="gallery-item image-popup">
-                <div class="image bg-transfer" style="background-image: url(&quot;content/img/gallery-02.jpg&quot;);">
-                    <img src="content/img/gallery-02.jpg" alt="">
-                </div>
-            </a>
-            <!--end gallery-item-->
-        </div>
-        <!--end col-md-4-->
-        <div class="col-md-4 col-sm-4">
-            <a href="content/img/gallery-big-01.jpg" class="gallery-item image-popup">
-                <div class="image bg-transfer" style="background-image: url(&quot;content/img/gallery-04.jpg&quot;);">
-                    <img src="content/img/gallery-04.jpg" alt="">
-                </div>
-            </a>
-            <!--end gallery-item-->
-        </div>
-        <!--end col-md-4-->
+        @foreach (var i in ViewBag.model.BlockItem) {
+            var col = (int)Math.Floor((float)12 / ViewBag.model.Columns);
+            <div class="col-md-@col col-sm-@col">
+                <a href="~/Content/uploads/@i.Image" class="gallery-item image-popup" title="@i.Title">
+                    <div class="image bg-transfer" style="background-image: url('@(Util.thumbnailLink(i.Image, 360, 220))');">
+                        @Util.thumbnail(i.Image, 360, 220)
+                    </div>
+                </a>
+            </div>
+        }
     </div>
-    <!--end row-->
 </div>

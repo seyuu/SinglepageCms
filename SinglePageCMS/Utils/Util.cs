@@ -33,6 +33,10 @@ public static class Util {
     //==================================================
     //UPLOAD
     //==================================================
+    public static string thumbnailLink(string file, int width = 100, int height = 100) {
+        return "/thumbnail?w=" + width + "&h=" + height + "&f=" + file;
+    }
+
     public static HtmlString thumbnail(string file, int width = 100, int height = 100) {
         return new HtmlString(@"<img src=""/thumbnail?w=" + width + "&h=" + height + "&f=" + file + @""" />");
     }

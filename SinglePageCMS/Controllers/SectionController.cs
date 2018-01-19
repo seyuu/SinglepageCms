@@ -20,7 +20,8 @@ public class SectionController : BaseController {
             "BigSlide",
             "Stage",
             "Text",
-            "Video"
+            "Video",
+            "Proje"
         };
         return View();
     }

@@ -169,6 +169,23 @@
           <Property Name="Keywords" Type="nvarchar" MaxLength="250" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Proje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Columns" Type="int" Nullable="false" />
+          <Property Name="Items" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjeItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="Image" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Quote">
           <Key>
             <PropertyRef Name="ID" />
@@ -473,6 +490,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Proje_Block">
+          <End Role="Block" Type="Self.Block" Multiplicity="1" />
+          <End Role="Proje" Type="Self.Proje" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Block">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Proje">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjeItem_BlockItem">
+          <End Role="BlockItem" Type="Self.BlockItem" Multiplicity="1" />
+          <End Role="ProjeItem" Type="Self.ProjeItem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BlockItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjeItem">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Quote_Block">
           <End Role="Block" Type="Self.Block" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -605,6 +646,8 @@
           <EntitySet Name="MiniSlide" EntityType="Self.MiniSlide" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MiniSlideItem" EntityType="Self.MiniSlideItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proje" EntityType="Self.Proje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjeItem" EntityType="Self.ProjeItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quote" EntityType="Self.Quote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuoteItem" EntityType="Self.QuoteItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
@@ -677,6 +720,14 @@
           <AssociationSet Name="FK_Modul_Section" Association="Self.FK_Modul_Section">
             <End Role="Section" EntitySet="Section" />
             <End Role="Block" EntitySet="Block" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proje_Block" Association="Self.FK_Proje_Block">
+            <End Role="Block" EntitySet="Block" />
+            <End Role="Proje" EntitySet="Proje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjeItem_BlockItem" Association="Self.FK_ProjeItem_BlockItem">
+            <End Role="BlockItem" EntitySet="BlockItem" />
+            <End Role="ProjeItem" EntitySet="ProjeItem" />
           </AssociationSet>
           <AssociationSet Name="FK_Quote_Block" Association="Self.FK_Quote_Block">
             <End Role="Block" EntitySet="Block" />
@@ -811,6 +862,14 @@
           <AssociationSet Name="FK_AccordionItems_BlockItem" Association="SinglePageCMSModel.FK_AccordionItems_BlockItem">
             <End Role="BlockItem" EntitySet="BlockItem" />
             <End Role="AccordionItems" EntitySet="BlockItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proje_Block" Association="SinglePageCMSModel.FK_Proje_Block">
+            <End Role="Block" EntitySet="Block" />
+            <End Role="Proje" EntitySet="Block" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjeItem_BlockItem" Association="SinglePageCMSModel.FK_ProjeItem_BlockItem">
+            <End Role="BlockItem" EntitySet="BlockItem" />
+            <End Role="ProjeItem" EntitySet="BlockItem" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="BigSlideItem" BaseType="SinglePageCMSModel.BlockItem">
@@ -1253,6 +1312,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Proje" BaseType="SinglePageCMSModel.Block">
+          <Property Name="Columns" Type="Int32" Nullable="false" />
+          <Property Name="Items" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Proje_Block">
+          <End Type="SinglePageCMSModel.Block" Role="Block" Multiplicity="1" />
+          <End Type="SinglePageCMSModel.Proje" Role="Proje" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Block">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Proje">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProjeItem" BaseType="SinglePageCMSModel.BlockItem">
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_ProjeItem_BlockItem">
+          <End Type="SinglePageCMSModel.BlockItem" Role="BlockItem" Multiplicity="1" />
+          <End Type="SinglePageCMSModel.ProjeItem" Role="ProjeItem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BlockItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProjeItem">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1365,6 +1457,13 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(SinglePageCMSModel.Proje)">
+              <MappingFragment StoreEntitySet="Proje">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Columns" ColumnName="Columns" />
+                <ScalarProperty Name="Items" ColumnName="Items" />
+              </MappingFragment>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BlockItem">
             <EntityTypeMapping TypeName="IsTypeOf(SinglePageCMSModel.BlockItem)">
@@ -1429,6 +1528,14 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(SinglePageCMSModel.ProjeItem)">
+              <MappingFragment StoreEntitySet="ProjeItem">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

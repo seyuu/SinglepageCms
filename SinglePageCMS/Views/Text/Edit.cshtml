@@ -43,9 +43,14 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="Content">İçerik</label>
             <div class="col-md-9">
-                <textarea id="Content" name="Content" rows="4" class="form-control">@ViewBag.model.Content</textarea>
+                @*<textarea id="Content" name="Content" rows="4" class="form-control">@ViewBag.model.Content</textarea>*@
+                <textarea id="Content" name="Content" class="ckeditor">@ViewBag.model.Content</textarea>
+
+
             </div>
         </div>
+
     </div>
 
 </form>
+

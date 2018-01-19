@@ -5,22 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="497c3001fa2d4b2e8e64e96eb700b55f" Name="Diagram1" ZoomLevel="67">
-        <EntityTypeShape EntityType="SinglePageCMSModel.BigSlideItem" Width="1.5" PointX="4.125" PointY="33.625" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Block" Width="1.5" PointX="23.25" PointY="28.375" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.BlockItem" Width="1.5" PointX="9.75" PointY="31.25" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Feature" Width="1.5" PointX="33.375" PointY="31.25" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Form" Width="1.5" PointX="17.625" PointY="31.25" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.FormItem" Width="1.5" PointX="6.375" PointY="33.625" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Gallery" Width="1.5" PointX="19.875" PointY="31.25" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.GalleryItem" Width="1.5" PointX="8.625" PointY="33.625" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Map" Width="1.5" PointX="22.125" PointY="31.25" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.MiniSlide" Width="1.5" PointX="24.375" PointY="31.25" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.MiniSlideItem" Width="1.5" PointX="10.875" PointY="33.625" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.QuoteItem" Width="1.5" PointX="13.125" PointY="33.625" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.SlideItem" Width="1.5" PointX="15.375" PointY="33.625" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Stage" Width="1.5" PointX="26.625" PointY="31.25" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Text" Width="1.5" PointX="28.875" PointY="31.25" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Video" Width="1.5" PointX="31.125" PointY="31.25" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.BigSlideItem" Width="1.5" PointX="24.375" PointY="36.875" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Block" Width="1.5" PointX="48" PointY="31.625" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.BlockItem" Width="1.5" PointX="32.25" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Feature" Width="1.5" PointX="62.625" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Form" Width="1.5" PointX="42.375" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.FormItem" Width="1.5" PointX="26.625" PointY="36.875" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Gallery" Width="1.5" PointX="44.625" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.GalleryItem" Width="1.5" PointX="28.875" PointY="36.875" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Map" Width="1.5" PointX="46.875" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.MiniSlide" Width="1.5" PointX="49.125" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.MiniSlideItem" Width="1.5" PointX="31.125" PointY="36.875" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.QuoteItem" Width="1.5" PointX="37.875" PointY="36.875" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.SlideItem" Width="1.5" PointX="40.125" PointY="36.875" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Stage" Width="1.5" PointX="55.875" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Text" Width="1.5" PointX="58.125" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Video" Width="1.5" PointX="60.375" PointY="34.5" />
         <AssociationConnector Association="SinglePageCMSModel.FK_BigSlideItem_BlockItem" />
         <AssociationConnector Association="SinglePageCMSModel.FK_BlockItem_Block" />
         <AssociationConnector Association="SinglePageCMSModel.FK_Form_Block" />
@@ -49,32 +49,38 @@
         <InheritanceConnector EntityType="SinglePageCMSModel.Map" />
         <InheritanceConnector EntityType="SinglePageCMSModel.Feature" />
         <InheritanceConnector EntityType="SinglePageCMSModel.Form" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Slide" Width="1.5" PointX="42.375" PointY="31.25" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.BigSlide" Width="1.5" PointX="35.625" PointY="31.25" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Slide" Width="1.5" PointX="71.625" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.BigSlide" Width="1.5" PointX="64.875" PointY="34.5" />
         <AssociationConnector Association="SinglePageCMSModel.FK_BigSlide_Block" />
         <InheritanceConnector EntityType="SinglePageCMSModel.BigSlide" />
         <InheritanceConnector EntityType="SinglePageCMSModel.Slide" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Banner" Width="1.5" PointX="37.875" PointY="31.25" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Banner" Width="1.5" PointX="67.125" PointY="34.5" />
         <AssociationConnector Association="SinglePageCMSModel.FK_Banner_Block" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Quote" Width="1.5" PointX="40.125" PointY="31.25" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Quote" Width="1.5" PointX="69.375" PointY="34.5" />
         <AssociationConnector Association="SinglePageCMSModel.FK_Quote_Block" />
         <InheritanceConnector EntityType="SinglePageCMSModel.Quote" />
         <InheritanceConnector EntityType="SinglePageCMSModel.Banner" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Image" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Page" Width="1.5" PointX="19.5" PointY="27.625" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Section" Width="1.5" PointX="21.75" PointY="24.375" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Image" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Page" Width="1.5" PointX="19.125" PointY="28.375" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Section" Width="1.5" PointX="21.375" PointY="28.125" />
         <AssociationConnector Association="SinglePageCMSModel.FK_Modul_Section" />
         <AssociationConnector Association="SinglePageCMSModel.FK_Section_Page" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Menu" Width="1.5" PointX="3.375" PointY="1.5" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.MenuItem" Width="1.5" PointX="5.625" PointY="1.125" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Menu" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.MenuItem" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="SinglePageCMSModel.FK_MenuItem_Menu" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.Accordion" Width="1.5" PointX="25.5" PointY="27.625" />
-        <EntityTypeShape EntityType="SinglePageCMSModel.AccordionItems" Width="1.5" PointX="12" PointY="30.25" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Accordion" Width="1.5" PointX="51.375" PointY="34.5" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.AccordionItems" Width="1.5" PointX="33.375" PointY="36.875" />
         <AssociationConnector Association="SinglePageCMSModel.FK_Accordion_Block1" />
         <AssociationConnector Association="SinglePageCMSModel.FK_AccordionItems_BlockItem" />
         <InheritanceConnector EntityType="SinglePageCMSModel.Accordion" />
         <InheritanceConnector EntityType="SinglePageCMSModel.AccordionItems" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Proje" Width="1.5" PointX="53.625" PointY="34.5" />
+        <AssociationConnector Association="SinglePageCMSModel.FK_Proje_Block" />
+        <InheritanceConnector EntityType="SinglePageCMSModel.Proje" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.ProjeItem" Width="1.5" PointX="35.625" PointY="36.875" />
+        <AssociationConnector Association="SinglePageCMSModel.FK_ProjeItem_BlockItem" />
+        <InheritanceConnector EntityType="SinglePageCMSModel.ProjeItem" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
