@@ -22,6 +22,7 @@ public class BaseBlockMultiController<BlockT, ItemT> :
         return View("ItemEdit");
     }
 
+    [ValidateInput(false)]
     [HttpPost]
     public ActionResult ItemAdd(ItemT model) {
 
@@ -56,6 +57,7 @@ public class BaseBlockMultiController<BlockT, ItemT> :
         return View();
     }
 
+    [ValidateInput(false)]
     [HttpPost]
     public ActionResult ItemEdit(ItemT model) {
 

@@ -81,6 +81,7 @@
         <EntityTypeShape EntityType="SinglePageCMSModel.ProjeItem" Width="1.5" PointX="35.625" PointY="36.875" />
         <AssociationConnector Association="SinglePageCMSModel.FK_ProjeItem_BlockItem" />
         <InheritanceConnector EntityType="SinglePageCMSModel.ProjeItem" />
+        <EntityTypeShape EntityType="SinglePageCMSModel.Setting" Width="1.5" PointX="5.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

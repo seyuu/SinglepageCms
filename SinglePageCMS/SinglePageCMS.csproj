@@ -457,6 +457,7 @@
     <Content Include="Content\Admin\js\helpers\excanvas.min.js" />
     <Content Include="Content\Admin\js\helpers\gmaps.min.js" />
     <Content Include="Content\Admin\js\main.js" />
+    <Content Include="Content\Admin\js\plugins - Copy.js" />
     <Content Include="Content\Admin\js\plugins.js" />
     <Content Include="Content\Admin\js\vendor\bootstrap.min.js" />
     <Content Include="Content\Admin\js\vendor\jquery-1.11.1.min.js" />
@@ -562,6 +563,15 @@
     <Content Include="Content\js\readmore.min.js" />
     <Content Include="Content\js\scrollReveal.min.js" />
     <Content Include="Content\js\waypoints.min.js" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\type\budicons.css" />
+    <Content Include="Content\type\budicons\budicon.svg" />
+    <Content Include="Content\type\fontello.css" />
+    <Content Include="Content\type\fontello\fontello-circle.svg" />
+    <Content Include="Content\type\fontello\fontello-social.svg" />
+    <Content Include="Content\type\fontello\fontello.svg" />
+    <Content Include="Content\type\picons.css" />
+    <Content Include="Content\type\picons\piconsthin.svg" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -587,6 +597,7 @@
     <Compile Include="Controllers\ProjeController.cs" />
     <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Controllers\BigSlideController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\SlideController.cs" />
     <Compile Include="Controllers\StageController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
@@ -687,6 +698,9 @@
     <Compile Include="Models\Section.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Setting.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Slide.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -764,6 +778,24 @@
     <Content Include="Models\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\type\.DS_Store" />
+    <Content Include="Content\type\budicons\.DS_Store" />
+    <Content Include="Content\type\budicons\budicon.eot" />
+    <Content Include="Content\type\budicons\budicon.ttf" />
+    <Content Include="Content\type\budicons\budicon.woff" />
+    <Content Include="Content\type\fontello\fontello-circle.eot" />
+    <Content Include="Content\type\fontello\fontello-circle.ttf" />
+    <Content Include="Content\type\fontello\fontello-circle.woff" />
+    <Content Include="Content\type\fontello\fontello-social.eot" />
+    <Content Include="Content\type\fontello\fontello-social.ttf" />
+    <Content Include="Content\type\fontello\fontello-social.woff" />
+    <Content Include="Content\type\fontello\fontello.eot" />
+    <Content Include="Content\type\fontello\fontello.ttf" />
+    <Content Include="Content\type\fontello\fontello.woff" />
+    <Content Include="Content\type\picons\.DS_Store" />
+    <Content Include="Content\type\picons\piconsthin.eot" />
+    <Content Include="Content\type\picons\piconsthin.ttf" />
+    <Content Include="Content\type\picons\piconsthin.woff" />
     <None Include="packages.config" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Section\Index.cshtml" />
@@ -815,7 +847,6 @@
     <Content Include="Views\Page\Edit.cshtml" />
     <Content Include="Views\Menu\Edit.cshtml" />
     <Content Include="Views\Admin\Anasayfa.cshtml" />
-    <Content Include="Views\Default\Index - Copy.cshtml" />
     <Content Include="Views\Accordion\Edit.cshtml" />
     <Content Include="Views\Accordion\View.cshtml" />
     <Content Include="Views\Accordion\ItemEdit.cshtml" />
@@ -826,6 +857,7 @@
     <Content Include="Views\Proje\Items.cshtml" />
     <Content Include="Views\Proje\Menu.cshtml" />
     <Content Include="Views\Proje\View.cshtml" />
+    <Content Include="Views\Settings\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

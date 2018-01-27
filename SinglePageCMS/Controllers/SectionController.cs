@@ -139,7 +139,7 @@ public class SectionController : BaseController {
         //taşınacak kayıt
         var current = all.FirstOrDefault(i => i.ID == ID);
 
-        //en üstte değilse
+        //en altta değilse
         var index = all.IndexOf(current);
         if (index < all.Count - 1) {
 

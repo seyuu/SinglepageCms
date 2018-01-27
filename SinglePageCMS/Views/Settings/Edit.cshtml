@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+<div class="block-header">
+    <div class="row remove-margin">
+        <div class="col-md-8">
+            <div class="header-section">
+                <h1>Ayarlar</h1>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a href="@Request.UrlReferrer" class="header-link">
+                <h1><i class="fa fa-fw fa-chevron-left"></i><small>Geri</small></h1>
+            </a>
+        </div>
+        <div class="col-md-2">
+            <a href="javascript:$('form').submit()" class="header-link">
+                <h1><i class="fa fa-fw fa-check"></i><small>Kaydet</small></h1>
+            </a>
+        </div>
+    </div>
+</div>
+
+@Html.renderAlert()
+
+<form action="@Request.Url" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <input id="ID" name="ID" value="@ViewBag.model.ID" type="hidden" />
+
+    <h4 class="sub-header">SEO</h4>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Title">Başlık</label>
+        <div class="col-md-9">
+            <input id="Title" name="Title" value="@ViewBag.model.Title" maxlength="250" type="text" class="form-control" />
+            
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        <label class="col-md-2 control-label" for="Keywords">Kelimeler</label>
+        <div class="col-md-9">
+            <input id="Keywords" name="Keywords" value="@ViewBag.model.Keywords" maxlength="250" type="text" class="form-control" />
+            <span class="help-block">Virgülle ayırınız</span>
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Keywords">Kelimeler</label>
+        <div class="col-md-9">
+            <input id="Keywords" name="Keywords" value="@ViewBag.model.Keywords" class="input-tags" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Description">Açıklama</label>
+        <div class="col-md-9">
+            <input id="Description" name="Description" value="@ViewBag.model.Description" maxlength="250" type="text" class="form-control" />
+        </div>
+    </div>
+
+    <h4 class="sub-header">Admin</h4>
+
+    @*<div class="form-group">
+        <label class="col-md-2 control-label" for="AdminKullaniciAdi">Kullanıcı Adı</label>
+        <div class="col-md-9">
+            <input id="AdminKullaniciAdi" name="AdminKullaniciAdi" value="@ViewBag.model.AdminKullaniciAdi" maxlength="250" type="text" class="form-control" />
+            <span class="help-block">Virgülle ayırınız</span>
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="AdminSifre">Parola</label>
+        <div class="col-md-9">
+            <input id="AdminSifre" name="AdminSifre" maxlength="250" type="password" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="AdminSifreTekrar">Parola Tekrar</label>
+        <div class="col-md-9">
+            <input id="AdminSifreTekrar" name="AdminSifreTekrar" maxlength="250" type="password" class="form-control" />
+        </div>
+    </div>
+
+@*
+    <h4 class="sub-header">Diğer</h4>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="Favicon">Resim</label>
+        <div class="col-md-5">
+            @Util.thumbnail(ViewBag.model.Favicon, 50, 50)
+            <input id="Favicon" name="Favicon" type="file" class="large" />
+        </div>
+    </div>*@
+
+</form>

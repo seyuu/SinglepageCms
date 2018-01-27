@@ -6,6 +6,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 
+public enum NotificationType {
+   
+}
+
 public class BaseController : Controller {
 
     protected Db db {
@@ -23,4 +27,27 @@ public class BaseController : Controller {
         db.Dispose();
     }
 
+    private void alert(string type, string icon, string title, string message) {
+        TempData["alertType"] = type;
+        TempData["alertIcon"] = icon;
+        TempData["alertTitle"] = title;
+        TempData["alertMessage"] = message;
+    }
+
+    public void alertSuccess(string title, string message) {
+        alert("success", "fa-check", title, message);
+    }
+
+    public void alertInfo(string title, string message) {
+        alert("info", "fa-info-circle", title, message);
+    }
+
+    public void alertWarning(string title, string message) {
+        alert("warning", "fa-exclamation-triangle", title, message);
+    }
+
+    public void alertDanger(string title, string message) {
+        alert("danger", "fa-times", title, message);
+    }
+    
 }

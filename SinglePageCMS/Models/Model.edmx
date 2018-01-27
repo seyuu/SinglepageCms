@@ -215,6 +215,20 @@
           <Property Name="Full" Type="bit" Nullable="false" />
           <Property Name="Container" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminKullaniciAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdminSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="SuperAdminKullaniciAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="SuperAdminSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Keywords" Type="nvarchar(max)" />
+          <Property Name="Favicon" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Slide">
           <Key>
             <PropertyRef Name="ID" />
@@ -233,7 +247,7 @@
           <Property Name="No" Type="int" Nullable="false" />
           <Property Name="Image" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="250" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Stage">
           <Key>
@@ -271,7 +285,9 @@
           <Property Name="URL" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <Association Name="FK_Accordion_Block1">
-          <End Role="Block" Type="Self.Block" Multiplicity="1" />
+          <End Role="Block" Type="Self.Block" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Accordion" Type="Self.Accordion" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Block">
@@ -283,7 +299,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AccordionItems_BlockItem">
-          <End Role="BlockItem" Type="Self.BlockItem" Multiplicity="1" />
+          <End Role="BlockItem" Type="Self.BlockItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="AccordionItems" Type="Self.AccordionItems" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="BlockItem">
@@ -491,7 +509,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Proje_Block">
-          <End Role="Block" Type="Self.Block" Multiplicity="1" />
+          <End Role="Block" Type="Self.Block" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Proje" Type="Self.Proje" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Block">
@@ -503,7 +523,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjeItem_BlockItem">
-          <End Role="BlockItem" Type="Self.BlockItem" Multiplicity="1" />
+          <End Role="BlockItem" Type="Self.BlockItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ProjeItem" Type="Self.ProjeItem" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="BlockItem">
@@ -651,6 +673,7 @@
           <EntitySet Name="Quote" EntityType="Self.Quote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuoteItem" EntityType="Self.QuoteItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Setting" EntityType="Self.Setting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slide" EntityType="Self.Slide" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlideItem" EntityType="Self.SlideItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stage" EntityType="Self.Stage" Schema="dbo" store:Type="Tables" />
@@ -871,6 +894,7 @@
             <End Role="BlockItem" EntitySet="BlockItem" />
             <End Role="ProjeItem" EntitySet="BlockItem" />
           </AssociationSet>
+          <EntitySet Name="Setting" EntityType="SinglePageCMSModel.Setting" />
           </EntityContainer>
         <EntityType Name="BigSlideItem" BaseType="SinglePageCMSModel.BlockItem">
           <Property Name="No" Type="Int32" Nullable="false" />
@@ -947,7 +971,7 @@
           <Property Name="No" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Stage" BaseType="SinglePageCMSModel.Block">
           <Property Name="Icon" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1345,6 +1369,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminKullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdminSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SuperAdminKullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SuperAdminSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Favicon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1598,6 +1636,21 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Setting">
+            <EntityTypeMapping TypeName="SinglePageCMSModel.Setting">
+              <MappingFragment StoreEntitySet="Setting">
+                <ScalarProperty Name="Favicon" ColumnName="Favicon" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="SuperAdminSifre" ColumnName="SuperAdminSifre" />
+                <ScalarProperty Name="SuperAdminKullaniciAdi" ColumnName="SuperAdminKullaniciAdi" />
+                <ScalarProperty Name="AdminSifre" ColumnName="AdminSifre" />
+                <ScalarProperty Name="AdminKullaniciAdi" ColumnName="AdminKullaniciAdi" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

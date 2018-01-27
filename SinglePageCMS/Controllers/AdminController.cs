@@ -1,4 +1,5 @@
 ﻿using SinglePageCMS.Models;
+using System.Linq;
 using System.Web.Mvc;
 
 public class AdminController : BaseController {

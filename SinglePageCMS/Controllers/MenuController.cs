@@ -29,7 +29,7 @@ public class MenuController : BaseController {
 
     [HttpPost]
     [Route("Admin/Menu/Add/{MenuID:int}")]
-    public ActionResult Add(MenuItem model, string ExternalUrl) {
+    public ActionResult Add(MenuItem model) {
 
         //hatalar hatalar
         if (!ModelState.IsValid) {
@@ -39,7 +39,6 @@ public class MenuController : BaseController {
         }
 
         //yeni
-        model.Url = string.IsNullOrEmpty(model.Url) ? ExternalUrl : model.Url;
         model.No = db.MenuItem.Any() ? db.MenuItem.Max(i => i.No) + 1 : 1;
         db.Insert(model);
 

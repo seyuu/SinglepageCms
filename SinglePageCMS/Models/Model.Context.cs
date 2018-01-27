@@ -33,5 +33,6 @@ namespace SinglePageCMS.Models
         public virtual DbSet<Section> Section { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
         public virtual DbSet<MenuItem> MenuItem { get; set; }
+        public virtual DbSet<Setting> Setting { get; set; }
     }
 }

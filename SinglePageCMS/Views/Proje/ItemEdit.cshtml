@@ -35,6 +35,13 @@
     </div>
 
     <div class="form-group">
+        <label class="col-md-2 control-label" for="Description">İçerik</label>
+        <div class="col-md-9">
+            <textarea id="Description" name="Description" class="ckeditor">@ViewBag.model.Description</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label class="col-md-2 control-label" for="Image">Resim</label>
         <div class="col-md-5">
             @Util.thumbnail(ViewBag.model.Image, 50, 50)

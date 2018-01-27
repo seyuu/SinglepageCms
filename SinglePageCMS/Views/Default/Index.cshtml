@@ -2,10 +2,13 @@
 
 <html lang="en-US">
 <head>
-    <meta charset="UTF-8" />
+    <title>@ViewBag.title</title>
+    <meta name="description" content="@ViewBag.description">
+    <meta name="keywords" content="@ViewBag.keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" />
-    <link href="style/type/fontello.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <link href="content/style.css" rel="stylesheet" />
+    <link href="content/type/fontello.css" rel="stylesheet">
     <link href="content/fonts/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="content/fonts/elegant-fonts.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -13,7 +16,6 @@
     <link rel="stylesheet" href="content/css/owl.carousel.css" type="text/css">
     <link rel="stylesheet" href="content/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="content/css/style.css" type="text/css">
-    <title>Emre Mühendislik Bodrum</title>
 </head>
 <body class="links-hover-effect" data-spy="scroll" data-target=".navigation">
 
@@ -87,8 +89,11 @@
             @foreach (var i in ViewBag.sections) {
                 <div id="section-@i.ID" class="block @(i.Invert ? "background-is-dark" : "")">
 
-                    <div class="@(i.Full ? "" : "container")">
+                    <div class="container">
                         <h2>@i.Title</h2>
+                    </div>
+
+                    <div class="@(i.Full ? "" : "container")">
                         <div class="row">
                             @foreach (var j in ((IEnumerable<dynamic>)i.Block).OrderBy(x => x.No)) {
                                 <div class="col-md-@j.Width col-sm-@j.Width">
@@ -198,7 +203,7 @@
     <script type="text/javascript" src="content/js/pace.min.js"></script>
     <script src="content/js/jquery.fitvids.js"></script>
     <script type="text/javascript" src="content/js/custom.js"></script>
-    <script src="style/js/jquery.isotope.min.js"></script>
+    @*<script src="style/js/jquery.isotope.min.js"></script>*@
 
     <!--<script type="text/javascript">
         var latitude = 34.038405;
@@ -209,62 +214,62 @@
     </script>-->
 
     <script type="text/javascript">
-        var isotopeBreakpoints = [
-            { min_width: 1680, columns: 5 },
-            { min_width: 1440, max_width: 1680, columns: 5 },
-            { min_width: 1024, max_width: 1440, columns: 4 },
-            { min_width: 768, max_width: 1024, columns: 3 },
-            { max_width: 768, columns: 1 }
+        //var isotopeBreakpoints = [
+        //    { min_width: 1680, columns: 5 },
+        //    { min_width: 1440, max_width: 1680, columns: 5 },
+        //    { min_width: 1024, max_width: 1440, columns: 4 },
+        //    { min_width: 768, max_width: 1024, columns: 3 },
+        //    { max_width: 768, columns: 1 }
 
-        ];
-        /*-----------------------------------------------------------------------------------*/
-        /*	ISOTOPE CLASSIC PORTFOLIO
-        /*-----------------------------------------------------------------------------------*/
-        $(document).ready(function () {
-            "use strict";
-            var $container = $('.fix-portfolio .items');
+        //];
+        ///*-----------------------------------------------------------------------------------*/
+        ///*	ISOTOPE CLASSIC PORTFOLIO
+        ///*-----------------------------------------------------------------------------------*/
+        //$(document).ready(function () {
+        //    "use strict";
+        //    var $container = $('.fix-portfolio .items');
 
-            $container.imagesLoaded(function () {
-                $container.isotope({
-                    itemSelector: '.fix-portfolio .item',
-                    layoutMode: 'fitRows'
-                });
-            });
+        //    $container.imagesLoaded(function () {
+        //        $container.isotope({
+        //            itemSelector: '.fix-portfolio .item',
+        //            layoutMode: 'fitRows'
+        //        });
+        //    });
 
-            // hook to window resize to resize the portfolio items for fluidity / responsiveness
-            $(window).smartresize(function () {
-                var windowWidth = $(window).width();
-                var windowHeight = $(window).height();
+        //    // hook to window resize to resize the portfolio items for fluidity / responsiveness
+        //    $(window).smartresize(function () {
+        //        var windowWidth = $(window).width();
+        //        var windowHeight = $(window).height();
 
-                for (var i = 0; i < isotopeBreakpoints.length; i++) {
-                    if (windowWidth >= isotopeBreakpoints[i].min_width || !isotopeBreakpoints[i].min_width) {
-                        if (windowWidth < isotopeBreakpoints[i].max_width || !isotopeBreakpoints[i].max_width) {
-                            $container.find('.item').each(function () {
-                                $(this).width(Math.floor($container.width() / isotopeBreakpoints[i].columns));
-                            });
+        //        for (var i = 0; i < isotopeBreakpoints.length; i++) {
+        //            if (windowWidth >= isotopeBreakpoints[i].min_width || !isotopeBreakpoints[i].min_width) {
+        //                if (windowWidth < isotopeBreakpoints[i].max_width || !isotopeBreakpoints[i].max_width) {
+        //                    $container.find('.item').each(function () {
+        //                        $(this).width(Math.floor($container.width() / isotopeBreakpoints[i].columns));
+        //                    });
 
-                            break;
-                        }
-                    }
-                }
-            });
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //    });
 
-            $(window).trigger('smartresize');
+        //    $(window).trigger('smartresize');
 
 
-            $('.fix-portfolio .filter li a').click(function () {
+        //    $('.fix-portfolio .filter li a').click(function () {
 
-                $('.fix-portfolio .filter li a').removeClass('active');
-                $(this).addClass('active');
+        //        $('.fix-portfolio .filter li a').removeClass('active');
+        //        $(this).addClass('active');
 
-                var selector = $(this).attr('data-filter');
-                $container.isotope({
-                    filter: selector
-                });
+        //        var selector = $(this).attr('data-filter');
+        //        $container.isotope({
+        //            filter: selector
+        //        });
 
-                return false;
-            });
-        });
+        //        return false;
+        //    });
+        //});
 
 
     </script>

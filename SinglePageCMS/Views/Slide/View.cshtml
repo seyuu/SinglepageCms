@@ -5,9 +5,18 @@
          data-owl-nav="@(ViewBag.model.Nav ?1:0)"
          data-owl-dots="@(ViewBag.model.Dot ?1:0)"
          data-owl-center="1"
+         data-owl-auto-height="1"
          data-owl-loop="1">
         @foreach (var i in ViewBag.model.BlockItem) {
-            <img src="~/content/uploads/@(i.Image)" alt="@i.Title">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img src="@Util.thumbnailLink(i.Image, 600, 278)" style="height:278px" alt="@i.Title">
+                    @*<img src="~/content/uploads/@(i.Image)" style="height:278px;" alt="@i.Title">*@
+                </div>
+                <div class="col-xs-6">
+                    @Html.Raw(i.Description)
+                </div>
+            </div>
         }
     </div>
 </div>

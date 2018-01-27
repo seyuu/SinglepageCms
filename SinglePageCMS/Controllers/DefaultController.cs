@@ -24,6 +24,10 @@ public class DefaultController : BaseController {
             .ToList()
         );
 
+        var settings = db.Setting.FirstOrDefault();
+        ViewBag.title = page.Title ?? settings.Title;
+        ViewBag.description  = page.Description ?? settings.Description;
+        ViewBag.keywords = page.Keywords ?? settings.Keywords;
         return View();
     }
 
@@ -48,7 +52,11 @@ public class DefaultController : BaseController {
             .ToList()
         );
 
+        var settings = db.Setting.FirstOrDefault();
+        ViewBag.title = page.Title ?? settings.Title;
+        ViewBag.description = page.Description ?? settings.Description;
+        ViewBag.keywords = page.Keywords ?? settings.Keywords;
         return View();
-    }
 
+    }
 }

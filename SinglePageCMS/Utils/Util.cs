@@ -12,8 +12,94 @@ using System.Web.Helpers;
 using System.Net.Mail;
 using System.Net;
 using System.Web.SessionState;
+using SinglePageCMS.Models;
+using System.Text;
+using System.Web.Mvc.Html;
 
 public static class Util {
+
+    //==================================================
+    //URL SEÇİCİ
+    //==================================================
+    public static List<SelectListItem> getUrlList() {
+        var db = new Db();
+        var pages = db.Page.Include("Section").OrderBy(i => i.Title).ToList();
+        var items = new List<SelectListItem>();
+        foreach (var i in pages) {
+            var pageURL = Util.urlYap(i.Title) + "-" + i.ID;
+            items.Add(
+                new SelectListItem() {
+                    Text = i.Title,
+                    Value = pageURL
+                }
+            );
+            foreach (var j in i.Section) {
+                var selectURL = pageURL + "#section-" + j.ID;
+                items.Add(
+                    new SelectListItem() {
+                        Text = "-" + j.Title,
+                        Value = selectURL
+                    }
+                );
+            }
+        }
+        return items;
+    }
+
+
+    //public static IHtmlString selectURL(this HtmlHelper html, string name, string value) {
+    //    var db = new Db();
+    //    var pages = db.Page.Include("Section").OrderBy(i => i.Title).ToList();
+    //    var items = new List<SelectListItem>();
+    //    foreach (var i in pages) {
+    //        var pageURL = Util.urlYap(i.Title) + "-" + i.ID;
+    //        items.Add(
+    //            new SelectListItem() {
+    //                Text = i.Title,
+    //                Value = pageURL
+    //            }
+    //        );
+    //        foreach (var j in i.Section) {
+    //            var selectURL = Util.urlYap(i.Title) + "-" + i.ID;
+    //            new SelectListItem() {
+    //                Text = i.Title,
+    //                Value = pageURL + "#" + j.ID
+    //            };
+    //        }
+    //    }
+    //    return html.ListBox(name, items);
+    //}
+
+    //==================================================
+    //ALERT
+    //==================================================
+
+
+    public static IHtmlString renderAlert(this HtmlHelper html) {
+
+        var tempData = html.ViewContext.TempData;
+        var alertType = tempData["alertType"];
+        var alertIcon = tempData["alertIcon"];
+        var alertTitle = (string)tempData["alertTitle"];
+        var alertMessage = tempData["alertMessage"];
+
+        //alert yoksa çızıktırma
+        if (string.IsNullOrEmpty(alertTitle)) {
+            return null;
+        }
+
+        //çızıktır
+        return new HtmlString(string.Format(@"
+            <div class=""alert alert-{0} alert-dismissable"">
+                <button type=""button"" class=""close"" data-dismiss=""alert"" aria-hidden=""true"">×</button>
+                <h4><i class=""fa {1}""></i> {2}</h4> {3}
+            </div>",
+            alertType,
+            alertIcon,
+            alertTitle,
+            alertMessage
+        ));
+    }
 
     ///==================================================
     ///KULLANICI

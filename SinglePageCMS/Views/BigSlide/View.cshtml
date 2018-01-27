@@ -5,21 +5,22 @@
     data-owl-dots="@(ViewBag.model.Dot ?1:0)"
     data-owl-center="1"
     data-owl-loop="1"
-    data-owl-nav-container="#bigGallery@(ViewBag.ID)">
-    <div class="slide">
-        <div class="container">
-            @foreach (var i in ViewBag.model.BlockItem) {
-                <img src="~/content/uploads/@(i.Image)" alt=""> 
+    data-owl-auto-width="1"
+    data-owl-nav-container="#bigGallery@(ViewBag.model.ID)">
+    @foreach (var i in ViewBag.model.BlockItem) {
+        <div class="slide">
+            <div class="container">
+                @*@Util.thumbnail(i.Image, 2048, 570)*@
+                <img src="@Util.thumbnailLink(i.Image, 1200, 570)" style="height:570px" alt="@i.Title">
                 <div class="description">
                     <h3 class="framed">@i.Title</h3>
                 </div>
-            }
+            </div>
         </div>
-    </div>
+    }
 </div>
-
 <div class="container">
     <div class="owl-nav-wrapper">
-        <div class="owl-nav" id="@(ViewBag.ID)"></div>
+        <div class="owl-nav" id="bigGallery@(ViewBag.model.ID)"></div>
     </div>
 </div>
