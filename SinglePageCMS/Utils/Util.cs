@@ -22,28 +22,29 @@ public static class Util {
     //URL SEÇİCİ
     //==================================================
     public static List<SelectListItem> getUrlList() {
-        var db = new Db();
-        var pages = db.Page.Include("Section").OrderBy(i => i.Title).ToList();
-        var items = new List<SelectListItem>();
-        foreach (var i in pages) {
-            var pageURL = Util.urlYap(i.Title) + "-" + i.ID;
-            items.Add(
-                new SelectListItem() {
-                    Text = i.Title,
-                    Value = pageURL
-                }
-            );
-            foreach (var j in i.Section) {
-                var selectURL = pageURL + "#section-" + j.ID;
+        using (var db = new Db()) {
+            var pages = db.Page.Include("Section").OrderBy(i => i.Title).ToList();
+            var items = new List<SelectListItem>();
+            foreach (var i in pages) {
+                var pageURL = Util.urlYap(i.Title) + "-" + i.ID;
                 items.Add(
                     new SelectListItem() {
-                        Text = "-" + j.Title,
-                        Value = selectURL
+                        Text = i.Title,
+                        Value = pageURL
                     }
                 );
+                foreach (var j in i.Section) {
+                    var selectURL = pageURL + "#section-" + j.ID;
+                    items.Add(
+                        new SelectListItem() {
+                            Text = "-" + j.Title,
+                            Value = selectURL
+                        }
+                    );
+                }
             }
+            return items;
         }
-        return items;
     }
 
 

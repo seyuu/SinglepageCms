@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 
+[AllowAnonymous]
 public class DefaultController : BaseController {
 
     [Route("~/")]

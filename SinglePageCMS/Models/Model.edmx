@@ -221,9 +221,9 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AdminKullaniciAdi" Type="nvarchar" MaxLength="50" />
-          <Property Name="AdminSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdminSifre" Type="nvarchar" MaxLength="256" />
           <Property Name="SuperAdminKullaniciAdi" Type="nvarchar" MaxLength="50" />
-          <Property Name="SuperAdminSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="SuperAdminSifre" Type="nvarchar" MaxLength="256" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Keywords" Type="nvarchar(max)" />
@@ -1375,9 +1375,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AdminKullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AdminSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdminSifre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="SuperAdminKullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SuperAdminSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SuperAdminSifre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />

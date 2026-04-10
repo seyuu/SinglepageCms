@@ -83,7 +83,7 @@ public class MvcApplication : System.Web.HttpApplication {
         );
 
         RouteTable.Routes.MapRoute(
-            name: "ItemEdit ",
+            name: "ItemEdit",
             url: "Admin/{controller}/ItemEdit/{ID}",
             defaults: new {
                 action = "ItemEdit"

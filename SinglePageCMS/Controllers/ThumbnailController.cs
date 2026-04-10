@@ -5,7 +5,48 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 
+[AllowAnonymous]
 public class ThumbnailController: Controller {
+
+    private static string ResolveUploadPath(string uploadsDir, string fileName) {
+        if (string.IsNullOrEmpty(fileName)) {
+            return null;
+        }
+        var safeName = Path.GetFileName(fileName);
+        if (string.IsNullOrEmpty(safeName)) {
+            return null;
+        }
+        var fullPath = Path.GetFullPath(Path.Combine(uploadsDir, safeName));
+        if (!fullPath.StartsWith(uploadsDir, StringComparison.OrdinalIgnoreCase)) {
+            return null;
+        }
+        return File.Exists(fullPath) ? fullPath : null;
+    }
+
+    private ActionResult RenderThumbnail(string fullPath, int w, int h) {
+        Image img = null;
+        Bitmap bmp = null;
+        MemoryStream ms = null;
+        try {
+            img = Image.FromFile(fullPath);
+            var _maxWidth = w > 0 ? w : img.Width;
+            var _maxHeight = h > 0 ? h : img.Height;
+            var _scaleWidth = (float)_maxWidth / img.Width;
+            var _scaleHeight = (float)_maxHeight / img.Height;
+            var _scale = Math.Min(1f, Math.Min(_scaleWidth, _scaleHeight));
+            var _newWidth = (int)(_scale * img.Width);
+            var _newHeight = (int)(_scale * img.Height);
+            bmp = new Bitmap(img, _newWidth, _newHeight);
+            ms = new MemoryStream();
+            bmp.Save(ms, ImageFormat.Png);
+            return File(ms.ToArray(), "image/png");
+        }
+        finally {
+            ms?.Dispose();
+            bmp?.Dispose();
+            img?.Dispose();
+        }
+    }
 
     //[Route("Thumbnail")]
     //public ActionResult Index(int w, int h, string f) {
@@ -39,31 +80,12 @@ public class ThumbnailController: Controller {
             f = "no-photo.png";
         }
 
-        //dosya aç
-        var dir = Server.MapPath("~/Content/uploads");
-        var path = Path.Combine(dir, f);
-        var img = Image.FromFile(path);
-
-        //boyutlandır
-        var _maxWidth = w > 0 ? w : img.Width;
-        var _maxHeight = h > 0 ? h : img.Height;
-        var _scaleWidth = (float)_maxWidth / img.Width;
-        var _scaleHeight = (float)_maxHeight / img.Height;
-        var _scale = Math.Min(1f, Math.Min(_scaleWidth, _scaleHeight));
-        var _newWidth = (int)(_scale * img.Width);
-        var _newHeight = (int)(_scale * img.Height);
-        var bmp = new Bitmap(img, _newWidth, _newHeight);
-
-        //kaydet
-        var ms = new MemoryStream();
-        bmp.Save(ms, ImageFormat.Png);
-        var data = ms.ToArray();
-
-        ms.Close();
-        bmp.Dispose();
-        img.Dispose();
-
-        return File(data, "image/png");
+        var dir = Path.GetFullPath(Server.MapPath("~/Content/uploads"));
+        var path = ResolveUploadPath(dir, f);
+        if (path == null) {
+            return HttpNotFound();
+        }
+        return RenderThumbnail(path, w, h);
     }
 
     [Route("Crop")]
@@ -78,35 +100,12 @@ public class ThumbnailController: Controller {
             f = "no-photo.png";
         }
 
-        //dosya aç
-        var dir = Server.MapPath("~/Content/uploads");
-        var path = Path.Combine(dir, f);
-        var img = Image.FromFile(path);
-
-        //boyutlandır
-        var _maxWidth = w > 0 ? w : img.Width;
-        var _maxHeight = h > 0 ? h : img.Height;
-
-        var _scaleWidth = (float)_maxWidth / img.Width;
-        var _scaleHeight = (float)_maxHeight / img.Height;
-
-        var _scale = Math.Min(1f, Math.Min(_scaleWidth, _scaleHeight));
-
-        var _newWidth = (int)(_scale * img.Width);
-        var _newHeight = (int)(_scale * img.Height);
-
-        var bmp = new Bitmap(img, _newWidth, _newHeight);
-
-        //kaydet
-        var ms = new MemoryStream();
-        bmp.Save(ms, ImageFormat.Png);
-        var data = ms.ToArray();
-
-        ms.Close();
-        bmp.Dispose();
-        img.Dispose();
-
-        return File(data, "image/png");
+        var dir = Path.GetFullPath(Server.MapPath("~/Content/uploads"));
+        var path = ResolveUploadPath(dir, f);
+        if (path == null) {
+            return HttpNotFound();
+        }
+        return RenderThumbnail(path, w, h);
     }
 
     //vb kodu 

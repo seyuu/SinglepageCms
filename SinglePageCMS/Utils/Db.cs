@@ -21,10 +21,9 @@ public class Db : SinglePageCMSEntities {
             }
             throw new Exception(message);
         }
-        catch (DbUpdateException e) {
-
+        catch (DbUpdateException) {
+            throw;
         }
-        return 0;
     }
 
     public void Update<T>(T entity, params string[] exlude) where T : class {

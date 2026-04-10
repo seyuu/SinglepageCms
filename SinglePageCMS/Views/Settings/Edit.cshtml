@@ -61,25 +61,48 @@
 
     <h4 class="sub-header">Admin</h4>
 
-    @*<div class="form-group">
-        <label class="col-md-2 control-label" for="AdminKullaniciAdi">Kullanıcı Adı</label>
-        <div class="col-md-9">
-            <input id="AdminKullaniciAdi" name="AdminKullaniciAdi" value="@ViewBag.model.AdminKullaniciAdi" maxlength="250" type="text" class="form-control" />
-            <span class="help-block">Virgülle ayırınız</span>
-        </div>
-    </div>*@
-
     <div class="form-group">
-        <label class="col-md-2 control-label" for="AdminSifre">Parola</label>
+        <label class="col-md-2 control-label" for="AdminKullaniciAdi">Kullanıcı adı</label>
         <div class="col-md-9">
-            <input id="AdminSifre" name="AdminSifre" maxlength="250" type="password" class="form-control" />
+            <input id="AdminKullaniciAdi" name="AdminKullaniciAdi" value="@ViewBag.model.AdminKullaniciAdi" maxlength="50" type="text" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-md-2 control-label" for="AdminSifreTekrar">Parola Tekrar</label>
+        <label class="col-md-2 control-label" for="AdminSifre">Yeni parola</label>
         <div class="col-md-9">
-            <input id="AdminSifreTekrar" name="AdminSifreTekrar" maxlength="250" type="password" class="form-control" />
+            <input id="AdminSifre" name="AdminSifre" maxlength="250" type="password" class="form-control" autocomplete="new-password" />
+            <span class="help-block">Değiştirmek istemiyorsanız boş bırakın.</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="AdminSifreTekrar">Yeni parola tekrar</label>
+        <div class="col-md-9">
+            <input id="AdminSifreTekrar" name="AdminSifreTekrar" maxlength="250" type="password" class="form-control" autocomplete="new-password" />
+        </div>
+    </div>
+
+    <h4 class="sub-header">Süper yönetici (isteğe bağlı)</h4>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="SuperAdminKullaniciAdi">Kullanıcı adı</label>
+        <div class="col-md-9">
+            <input id="SuperAdminKullaniciAdi" name="SuperAdminKullaniciAdi" value="@ViewBag.model.SuperAdminKullaniciAdi" maxlength="50" type="text" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="SuperAdminSifre">Yeni parola</label>
+        <div class="col-md-9">
+            <input id="SuperAdminSifre" name="SuperAdminSifre" maxlength="250" type="password" class="form-control" autocomplete="new-password" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="SuperAdminSifreTekrar">Yeni parola tekrar</label>
+        <div class="col-md-9">
+            <input id="SuperAdminSifreTekrar" name="SuperAdminSifreTekrar" maxlength="250" type="password" class="form-control" autocomplete="new-password" />
         </div>
     </div>
 

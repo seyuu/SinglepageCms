@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copy to Web.config and set secrets locally (do not commit Web.config with real passwords).
+
+  Database: set SinglePageCMSEntities to your SQL Server. For production, prefer Windows auth
+  or a secret store; Entity Framework reads this connection string by name.
+
+  Optional one-time bootstrap (remove after first login and password change in Admin > Settings):
+    BootstrapAdminUser, BootstrapAdminPassword in appSettings.
+
+  Password column length: run Scripts/AlterSettingPasswordColumns.sql on existing databases
+  so AdminSifre and SuperAdminSifre can store bcrypt hashes (nvarchar(256)).
+-->
+<configuration>
+  <appSettings>
+    <add key="webpages:Version" value="3.0.0.0" />
+    <add key="webpages:Enabled" value="false" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+    <!-- Optional: emergency login until DB credentials are configured -->
+    <!-- <add key="BootstrapAdminUser" value="admin" /> -->
+    <!-- <add key="BootstrapAdminPassword" value="CHANGE_ME" /> -->
+  </appSettings>
+  <system.web>
+    <customErrors mode="RemoteOnly" />
+    <compilation debug="false" targetFramework="4.6.1" />
+    <httpRuntime maxRequestLength="512000" targetFramework="4.6.1" />
+  </system.web>
+  <connectionStrings>
+    <add name="SinglePageCMSEntities"
+         connectionString="metadata=res://*/Models.Model.csdl|res://*/Models.Model.ssdl|res://*/Models.Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=YOUR_SERVER;initial catalog=SinglePageCMS;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"
+         providerName="System.Data.EntityClient" />
+  </connectionStrings>
+</configuration>

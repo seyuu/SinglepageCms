@@ -13,7 +13,6 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
         return PartialView();
     }
 
-    [Oturum]
     [ValidateInput(false)]
     public ActionResult Add(int SectionID) {
         var model = new T();
@@ -24,7 +23,6 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
         return View("Edit");
     }
 
-    [Oturum]
     [HttpPost]
     [ValidateInput(false)]
     public ActionResult Add(T model) {
@@ -56,14 +54,12 @@ public class BaseBlockController<T> : BaseController where T : Block, new() {
 
     }
 
-    [Oturum]
     [ValidateInput(false)]
     public ActionResult Edit(int ID) {
         ViewBag.model = db.Block.Find(ID);
         return View();
     }
 
-    [Oturum]
     [HttpPost]
     [ValidateInput(false)]
     public ActionResult Edit(T model) {
