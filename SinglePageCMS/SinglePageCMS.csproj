@@ -592,6 +592,7 @@
     </Content>
     <Content Include="Web.config.example" />
     <Content Include="Scripts\AlterSettingPasswordColumns.sql" />
+    <Content Include="Scripts\CreateDatabase.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccordionController.cs" />

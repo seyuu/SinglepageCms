@@ -8,8 +8,10 @@
   Optional one-time bootstrap (remove after first login and password change in Admin > Settings):
     BootstrapAdminUser, BootstrapAdminPassword in appSettings.
 
-  Password column length: run Scripts/AlterSettingPasswordColumns.sql on existing databases
-  so AdminSifre and SuperAdminSifre can store bcrypt hashes (nvarchar(256)).
+  New install (no backup in repo): run Scripts/CreateDatabase.sql on SQL Server to create
+  SinglePageCMS + tables + seed (admin / Admin123! — change immediately).
+
+  Existing DB only: run Scripts/AlterSettingPasswordColumns.sql if upgrading password column length.
 -->
 <configuration>
   <appSettings>
