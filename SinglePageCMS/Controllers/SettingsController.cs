@@ -1,6 +1,6 @@
 ﻿using SinglePageCMS.Models;
-using System.Web.Mvc;
 using System.Linq;
+using System.Web.Mvc;
 
 public class SettingsController : BaseController {
 
@@ -12,98 +12,56 @@ public class SettingsController : BaseController {
 
     [HttpPost]
     [Route("Admin/Settings")]
-    public ActionResult Edit(Setting model, string AdminSifreTekrar) {
+    public ActionResult Edit(Setting model, string AdminSifreTekrar, string SuperAdminSifreTekrar) {
 
-        //hatalar hatalar
-        if (!ModelState.IsValid) {
+        var existing = db.Setting.FirstOrDefault();
+        if (existing == null) {
+            alertDanger("Hata", "Ayar kaydı bulunamadı");
             ViewBag.model = model;
             return View();
         }
 
-        //şifre değiştirilmeyecek
-        if (string.IsNullOrEmpty(model.AdminSifre)) {
-            db.Update(model, "AdminKullaniciAdi", "AdminSifre");
-            alertSuccess("Başarılı", "İşlem tamamlandı");
+        if (!ModelState.IsValid) {
+            ViewBag.model = existing;
+            return View();
         }
 
-        //parola depiştir
-        else  if (model.AdminSifre == AdminSifreTekrar) {
-            db.Update(model, "AdminKullaniciAdi");
-            alertSuccess("Başarılı", "İşlem tamamlandı");
+        existing.Title = model.Title;
+        existing.Description = model.Description;
+        existing.Keywords = model.Keywords;
+        if (model.Favicon != null) {
+            existing.Favicon = model.Favicon;
         }
 
-        //hata
-        else {
-            alertDanger("Hata", "Parola ve tekrarı farklı");
+        if (!string.IsNullOrWhiteSpace(model.AdminKullaniciAdi)) {
+            existing.AdminKullaniciAdi = model.AdminKullaniciAdi.Trim();
         }
 
-        //tamamdır
+        if (!string.IsNullOrWhiteSpace(model.SuperAdminKullaniciAdi)) {
+            existing.SuperAdminKullaniciAdi = model.SuperAdminKullaniciAdi.Trim();
+        }
+
+        if (!string.IsNullOrEmpty(model.AdminSifre)) {
+            if (model.AdminSifre != AdminSifreTekrar) {
+                alertDanger("Hata", "Yönetici parolası ve tekrarı farklı");
+                ViewBag.model = existing;
+                return View();
+            }
+            existing.AdminSifre = PasswordHelper.HashPassword(model.AdminSifre);
+        }
+
+        if (!string.IsNullOrEmpty(model.SuperAdminSifre)) {
+            if (model.SuperAdminSifre != SuperAdminSifreTekrar) {
+                alertDanger("Hata", "Süper yönetici parolası ve tekrarı farklı");
+                ViewBag.model = existing;
+                return View();
+            }
+            existing.SuperAdminSifre = PasswordHelper.HashPassword(model.SuperAdminSifre);
+        }
+
+        db.SaveChanges();
+        alertSuccess("Başarılı", "İşlem tamamlandı");
         return RedirectToAction("Edit");
-
     }
 
 }
-
-
-//using SinglePageCMS.Models;
-//using System;
-//using System.Data.Entity;
-//using System.Linq;
-//using System.Web.Mvc;
-
-//namespace SinglePageCMS.Controllers {
-//    public class SettingsController : BaseController {
-//        // GET: Settings
-//        public ActionResult Index()
-//        {
-//            ViewBag.model = db.Setting.First();
-//            return View(ViewBag.model);
-//        }
-
-//        [HttpPost]
-//        [ValidateInput(false)]
-//        public ActionResult Index(Setting Model) {
-//            try {
-//                var kat = new Setting {
-
-//                    AdminKullaniciAdi = Model.AdminKullaniciAdi,
-//                    AdminSifre = Model.AdminSifre,
-//                    SuperAdminKullaniciAdi = Model.SuperAdminKullaniciAdi,
-//                    SuperAdminSifre = Model.SuperAdminSifre,
-//                    Title = Model.Title,
-//                    Description = Model.Description,
-//                    Keywords = Model.Keywords,
-//                    Favicon = Model.Favicon
-//                };
-//                db.Entry(Model).State = EntityState.Added;
-//                db.SaveChanges();
-//                TempData["message"] = "Added";
-//            }
-//            catch (Exception) {
-
-//                TempData["message"] = "Error";
-//            }
-
-//            return View("Index");
-//        }
-
-//        public ActionResult Edit() {
-//            var edit = db.Setting.First();
-//            return View(edit);
-//        }
-
-//        [HttpPost]
-//        public ActionResult Edit(Setting Model, int? Page) {
-//            try {
-//                db.Entry(Model).State = EntityState.Modified;
-//                db.SaveChanges();
-//                TempData["message"] = "Added";
-//            }
-//            catch (Exception) {
-//                TempData["message"] = "Error";
-//            }
-
-//            return View("Index");
-//        }
-//    }
-//}

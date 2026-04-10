@@ -69,6 +69,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
@@ -584,6 +587,12 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.config.example" />
+    <Content Include="Scripts\AlterSettingPasswordColumns.sql" />
+    <Content Include="Scripts\CreateDatabase.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccordionController.cs" />
@@ -726,6 +735,8 @@
     <Compile Include="Utils\Db.cs" />
     <Compile Include="Utils\Util.cs" />
     <Compile Include="Utils\Yetki.cs" />
+    <Compile Include="Utils\AdminAuthorizeAttribute.cs" />
+    <Compile Include="Utils\PasswordHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

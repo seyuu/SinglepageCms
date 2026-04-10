@@ -10,6 +10,7 @@ public enum NotificationType {
    
 }
 
+[AdminAuthorize]
 public class BaseController : Controller {
 
     protected Db db {
